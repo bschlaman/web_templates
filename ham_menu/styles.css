@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* body {display: block;} */
+div {
+    outline: 2px solid black;
+}
+.wrapper {
+}
+.side, .main {
+    min-height: 500px;
+    transition: 1s;
+}
+.side {
+    position: fixed;
+    float: left;
+    width: 300px;
+    background-color: #b1cbbb;
+    font-size: 70px;
+    font-weight: 800;
+    color: #deeaee;
+}
+.main {
+    float: right;
+    width: calc(100% - 300px);
+    background-color: #c94c4c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    font-weight: 800;
+    color: #deeaee;
+}
+.hamburger {
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 800;
+}
+.hamburger i {
+    visibility: hidden;
+}
+.menu {
+    position: fixed;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    background-color: darkblue;
+    transition: 1.5s;
+    color: white;
+    padding-top: 100px;
+    font-size: 40px;
+}
+.menu a {
+    display: block;
+    margin: 25px 15px;
+}
+@media screen and (max-width: 768px){
+    /* For mobile phones: */
+    .side {
+        width: 300px;
+        transform: translateX(-300px);
+    }
+    .main {
+        width: 100%;
+    }
+    .hamburger {
+        opacity: 1;
+        background-color: #eea29a;
+        transition: 1.5s;
+    }
+    .hamburger i {
+        visibility: visible;
+    }
+}
+
+.mmenu {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    z-index: 2;
+    background-color: #618685;
+    transition: 1.5s;
+    transform: translateY(-100px);
+}
+.mobile-container {
+    max-width: 480px;
+    margin: auto;
+    background-color: #555;
+    height: 500px;
+    color: white;
+    border-radius: 10px;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+}
+
+.topnav #myLinks {
+    display: none;
+}
+
+.topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.active {
+    background-color: #4CAF50;
+    color: white;
+}

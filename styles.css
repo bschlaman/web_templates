@@ -1,0 +1,13 @@
+div:not(#wrapper) {
+    outline: 2px solid black;
+}
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+.eq {
+    padding-left: 15px;
+}
