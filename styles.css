@@ -1,13 +1,40 @@
-div:not(#wrapper) {
-    outline: 2px solid black;
-}
-table {
-    border-collapse: collapse;
+/* wire-framing */
+div:not(.wrapper) {
 }
 
+/* defaults */
 table, th, td {
-    border: 1px solid black;
+	border: 1px solid black;
 }
-.eq {
-    padding-left: 15px;
+
+.showcase {
+	position: relative;
+	overflow: hidden;
+	outline: 2px solid blue;
+	margin-bottom: 2rem;
+}
+
+/* the rules */
+.code-snippet-css {
+	background: #f5eccb;	
+}
+
+/* hamburger menu */
+.ham-toggle {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	z-index: 2;
+	opacity: 30%;
+}
+.ham-menu {
+	position: absolute;
+	width: 10rem;
+	left: -100%;
+	background: red;
+	transition: left 0.3s ease;
+}
+.ham-toggle:checked ~ .ham-menu {
+	left: 0;
 }
