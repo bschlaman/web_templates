@@ -1,5 +1,6 @@
 /* wire-framing */
-div:not(.wrapper) {
+div:not(.wrapper):not(.showcase) {
+	border: 1px solid black;
 }
 
 /* defaults */
@@ -10,8 +11,8 @@ table, th, td {
 .showcase {
 	position: relative;
 	overflow: hidden;
-	outline: 2px solid blue;
 	margin-bottom: 2rem;
+	outline: 2px solid blue;
 }
 
 /* the rules */
@@ -20,21 +21,36 @@ table, th, td {
 }
 
 /* hamburger menu */
+.div2 {
+	height: 20rem;
+}
 .ham-toggle {
 	position: absolute;
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
 	z-index: 2;
-	opacity: 30%;
+	opacity: 0;
+	margin: 0;
 }
 .ham-menu {
 	position: absolute;
-	width: 10rem;
+	width: 50rem;
 	left: -100%;
-	background: red;
+	background: #cbf5e5;
 	transition: left 0.3s ease;
 }
 .ham-toggle:checked ~ .ham-menu {
 	left: 0;
+}
+
+/* hamburger menu */
+.div3 {
+	height: 30rem;
+}
+.blog-post {
+	padding: 1rem;
+}
+.date-time {
+	color: #555;
 }

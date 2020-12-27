@@ -6,6 +6,11 @@
 	<link rel="icon" type="image/svg" href="favicon.svg" />
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="js/main.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
 	<title>Home | Brendan Schlaman</title>
 </head>
 
@@ -22,9 +27,14 @@
 				<li>the css for .showcase is:</li>
 			</ol>
 			<pre class="code-snippet-css">
-				.showcase {
-					position: relative;
-				}
+				<code>
+					.showcase {
+						position: relative;
+						overflow: hidden;
+						margin-bottom: 2rem;
+						outline: 2px solid blue;
+					}
+				</code>
 			</pre>
 		</div>
 
@@ -38,23 +48,23 @@
 					<rect y="60" width="100" height="20"></rect>
 				</svg>
 				<div class="ham-menu">
-					<p>side menu</p>
+					<p>item</p>
+					<p>item</p>
+					<p>item</p>
 				</div>
 				<div>
-					<p>main content</p>
+					<p>This style of hamburger menu uses no javascript, and instead uses a hidden checkbox on top of an svg menu.</p>
 				</div>
 		</div>
 
 		<!-- div3 -->
 		<div class="showcase div3">
-		</div>
-		<div class="showcase div3">
-		</div>
-		<div class="showcase div3">
-		</div>
-		<div class="showcase div3">
-		</div>
-		<div class="showcase div3">
+			<h2>Blog Entry</h2>
+			<div class="blog-post">
+				<h3>My Thoughts on C</h3>
+				<p class="date-time">December 26, 2020</p>
+				<p>Scripting is the meat and potatoes of DevOps, and it's where I feel at ${HOME}.  The toolsets available to scripters like myself have an altogether different set of requirements than other programming languages.  A scripting language should be portable, interpreted, and infinitely extensible.  Runtime performance and memory management are but afterthoughts in scripts which can take hours to complete.  Bash fits the role perfectly, and it's my favorite language.  However, as a firm believer in the Unix philosophy, it was time to put my money where my mouth is.  It's why I chose to write my chess engine in C.</p>
+			</div>
 		</div>
 	</div>
 </body>
