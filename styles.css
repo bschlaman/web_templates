@@ -24,27 +24,51 @@ table, th, td {
 .div2 {
 	height: 20rem;
 }
+.ham-wrapper {
+	height: 100%;
+}
 .ham-toggle {
 	position: absolute;
 	width: 40px;
 	height: 40px;
+	margin: 0.3rem;
 	cursor: pointer;
 	z-index: 2;
 	opacity: 0;
-	margin: 0;
 }
-.ham-menu {
+svg {
+	z-index: 1;
+	margin: 0.3rem;
+}
+.ham-sidebar {
 	position: absolute;
-	width: 50rem;
+	width: 20rem;
+	height: 100%;
 	left: -100%;
 	background: #cbf5e5;
 	transition: left 0.3s ease;
 }
-.ham-toggle:checked ~ .ham-menu {
+.ham-sidebar a {
+	padding: 1rem 0;
+	font-size: 1.2rem;
+	text-decoration: none;
+	list-style-type: none;
+	color: #232323;
+	transition: color 0.3s ease;
+}
+.ham-sidebar a:hover {
+	color: #4f7794;
+}
+.ham-content {
+	height: 100%;
+	padding: 1rem;
+	background: #ededed;
+}
+.ham-toggle:checked ~ .ham-sidebar {
 	left: 0;
 }
 
-/* hamburger menu */
+/* blog post */
 .div3 {
 	height: 30rem;
 }
@@ -53,4 +77,21 @@ table, th, td {
 }
 .date-time {
 	color: #555;
+}
+
+/* blog post */
+.pos-parent {
+	padding: 1rem;
+	background: #54b;
+	font-size: 2rem;
+	color: white;
+}
+.pos-child {
+	padding: 1rem;
+	background: #b24;
+	font-size: 2rem;
+}
+.div4 div:first-child {
+	position: relative;
+	top: 3rem;
 }
