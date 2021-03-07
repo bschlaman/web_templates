@@ -29,13 +29,29 @@
 			<pre class="code-snippet-css">
 				<code>
 					.showcase {
+						/* so that other elements can be positioned relative to it */
 						position: relative;
+						/* so that there is no spillover */
 						overflow: hidden;
+						/* giving space between them */
 						margin-bottom: 2rem;
+						/* making it look a little nicer */
+						padding: 1rem;
+						/* so I can see where they are */
 						outline: 2px solid blue;
 					}
 				</code>
 			</pre>
+			<h3>Font family: Montserrat; sans-serif fallback</h3>
+			<h3>Colorscheme: Muted Sophisticated</h3>
+			<div class="rules-colorscheme">
+				<div class="rules-color rules-color0"><p>#f4f4f4</p></div>
+				<div class="rules-color rules-color1"><p>#b7d8d6</p></div>
+				<div class="rules-color rules-color2"><p>#789e9e</p></div>
+				<div class="rules-color rules-color3"><p>#4d6466</p></div>
+				<div class="rules-color rules-color4"><p>#eef3d8</p></div>
+				<div class="rules-color rules-color5"><p>#fe615a</p></div>
+			</div>
 		</div>
 
 		<!-- div2 -->
@@ -81,6 +97,25 @@
 				<div class="pos-child">Three</div>
 			</div>
 		</div>
+
+		<!-- div5 -->
+		<div class="showcase div5">
+			<h2>Nav Bar</h2>
+			<div class="nav-bar">
+				<img class="nav-logo" src="images/favicon.png">
+				<div class="nav-img" style="background-image: url(images/brendan_piano.jpeg);"></div>
+				<nav>
+					<ul>
+						<li><a href="#">One</a></li>
+						<li><a href="#">Two</a></li>
+						<li><a href="#">Three</a></li>
+					</ul>
+				</nav>
+				<a class="nav-contact" href="#"><button>Contact</button></a>
+			</div>
+		</div>
+
+	<!-- end of wrapper div -->
 	</div>
 </body>
 </html>

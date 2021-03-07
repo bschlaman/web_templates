@@ -7,11 +7,26 @@ div:not(.wrapper):not(.showcase) {
 table, th, td {
 	border: 1px solid black;
 }
+a {
+	text-decoration: none;
+}
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+html {
+	font-family: "Montserrat", sans-serif;
+}
 
 .showcase {
+	/* so that other elements can be positioned relative to it */
 	position: relative;
+	/* so that there is no spillover */
 	overflow: hidden;
+	/* giving space between them */
 	margin-bottom: 2rem;
+	/* making it look a little nicer */
+	padding: 1rem;
+	/* so I can see where they are */
 	outline: 2px solid blue;
 }
 
@@ -19,8 +34,41 @@ table, th, td {
 .code-snippet-css {
 	background: #f5eccb;	
 }
+.rules-colorscheme {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	background: #f4f4f4;
+}
+.rules-color {
+	display: flex;
+	width: 100%;
+	height: 8rem;
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 2rem;
+	justify-content: center;
+	align-items: center;
+	border: none !important;
+}
+.rules-color1 {
+	background: #b7d8d6;
+}
+.rules-color2 {
+	background: #789e9e;
+}
+.rules-color3 {
+	background: #4d6466;
+}
+.rules-color4 {
+	background: #eef3d8;
+}
+.rules-color5 {
+	background: #fe615a;
+}
 
-/* hamburger menu */
+/* div2: hamburger menu */
 .div2 {
 	height: 20rem;
 }
@@ -36,7 +84,7 @@ table, th, td {
 	z-index: 2;
 	opacity: 0;
 }
-svg {
+.div2 svg {
 	z-index: 1;
 	margin: 0.3rem;
 }
@@ -68,7 +116,7 @@ svg {
 	left: 0;
 }
 
-/* blog post */
+/* div3: blog post */
 .div3 {
 	height: 30rem;
 }
@@ -79,7 +127,7 @@ svg {
 	color: #555;
 }
 
-/* blog post */
+/* div4: positioning */
 .pos-parent {
 	padding: 1rem;
 	background: #54b;
@@ -94,4 +142,45 @@ svg {
 .div4 div:first-child {
 	position: relative;
 	top: 3rem;
+}
+
+/* Nav Bar */
+.div5 li, .div5 a, .div5 button {
+	font-size: 2rem;
+	color: rgba(255, 255, 255, 0.9);
+}
+.nav-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem 10%;
+	background: #789e9e;
+}
+.div5 li {
+	list-style: none;
+	display: inline-block;
+	padding: 0 2rem;
+}
+.div5 li a {
+	transition: all 0.3s ease 0s;
+}
+.div5 li a:hover {
+	color: #0089a9
+}
+.div5 button {
+	background: #eef3d8;
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	border: none;
+}
+.div5 button:hover {
+	background: #4d6466;
+}
+.nav-img {
+	width: 8rem;
+	height: 8rem;
+	border-radius: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
