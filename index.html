@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- metas -->
 	<meta charset="UTF-8">
 	<meta name="author" content="Brendan Schlaman">
-	<link rel="icon" type="image/svg" href="favicon.svg" />
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<script src="js/main.js"></script>
 
+	<!-- fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+	<!-- css, favicon, title -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="icon" type="image/png" href="favicon.png" />
+	<title>Templates | Brendan Schlaman</title>
+
+	<!-- highligh.js -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
-
-	<title>Home | Brendan Schlaman</title>
 </head>
-
 <body>
 	<div class="wrapper">
 
@@ -102,16 +108,26 @@
 		<div class="showcase div5">
 			<h2>Nav Bar</h2>
 			<div class="nav-bar">
-				<img class="nav-logo" src="images/favicon.png">
-				<div class="nav-img" style="background-image: url(images/brendan_piano.jpeg);"></div>
+				<div class="img-contact-wrapper">
+					<img src="images/brendan_piano.jpeg"/>
+					<div class="contact">
+						<p class="contact-name"><strong>Brendan Schlaman</strong></p>
+						<p class="contact-email">brendan.schlaman@pwc.com</p>
+						<p class="contact-phone">(312)-206-0231</p>
+					</div>
+				</div>
 				<nav>
 					<ul>
-						<li><a href="#">One</a></li>
-						<li><a href="#">Two</a></li>
-						<li><a href="#">Three</a></li>
+						<li><a href="#projects">Projects</a></li>
+						<li><a href="#skills">Skills</a></li>
+						<li><a href="#education">Education</a></li>
+						<li><a href="#experience">Experience</a></li>
+						<li><a href="#blog">Blog</a></li>
+						<li><a href="#music">Music</a></li>
+						<li><a href="#">Email me</a></li>
 					</ul>
 				</nav>
-				<a class="nav-contact" href="#"><button>Contact</button></a>
+				<a class="nav-resume" href="#"><button>Download Resume</button></a>
 			</div>
 		</div>
 

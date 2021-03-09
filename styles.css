@@ -1,9 +1,17 @@
+/*
+	### SETUP
+*/
+
 /* wire-framing */
 div:not(.wrapper):not(.showcase) {
 	border: 1px solid black;
 }
 
 /* defaults */
+html {
+	scroll-behavior: smooth;
+	-webkit-tap-highlight-color: transparent;
+}
 table, th, td {
 	border: 1px solid black;
 }
@@ -11,11 +19,14 @@ a {
 	text-decoration: none;
 }
 
-/* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-html {
+/* global */
+body {
 	font-family: "Montserrat", sans-serif;
 }
+
+/*
+	### CONTENT
+*/
 
 .showcase {
 	/* so that other elements can be positioned relative to it */
@@ -51,6 +62,9 @@ html {
 	justify-content: center;
 	align-items: center;
 	border: none !important;
+}
+.rules-color0 {
+	border: 2px solid rgba(0, 0, 0, 0.5) !important;
 }
 .rules-color1 {
 	background: #b7d8d6;
@@ -145,42 +159,81 @@ html {
 }
 
 /* Nav Bar */
-.div5 li, .div5 a, .div5 button {
-	font-size: 2rem;
-	color: rgba(255, 255, 255, 0.9);
-}
 .nav-bar {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 2rem 10%;
-	background: #789e9e;
+	padding: 1rem 5%;
+	background: #242729;
+}
+.div5 img {
+	border-radius: 50%;
+	object-fit: cover;
+	height: 4rem;
+	width: 4rem;
+	box-shadow: 0 0 2pt 1pt black;
+	display: inline-block;
+	vertical-align: middle;
+}
+.contact {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 1rem;
+}
+.contact p {
+	color: rgba(255, 255, 255, 0.9);
+}
+.contact-name {
+	font-size: 1.4vw;
+	margin: 0.3vw;
+}
+.contact-email, .contact-phone {
+	font-size: 1.2vw;
+	margin: 0.2vw;
+}
+.div5 a, .div5 button {
+	font-size: 1rem;
+	color: rgba(255, 255, 255, 0.9);
+}
+.div5 ul {
+	padding: 0;
 }
 .div5 li {
 	list-style: none;
 	display: inline-block;
-	padding: 0 2rem;
+	padding: 0 0.8rem;
 }
 .div5 li a {
-	transition: all 0.3s ease 0s;
+	/* so that after can be positioned relative to it */
+	position: relative;
+	transition: all 0.3s ease;
 }
 .div5 li a:hover {
-	color: #0089a9
+	color: #2496ed;
+}
+.div5 li a::after {
+	content: "";
+	position: absolute;
+	bottom: -0.1rem;
+	left: 0;
+	right: 0;
+	height: 0.1rem;
+	background: #2496ed;
+	transform: scaleX(0);
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.div5 li a:hover::after {
+	transform: scaleX(1);
 }
 .div5 button {
-	background: #eef3d8;
-	transition: all 0.3s ease 0s;
+	background: #242729;
+	transition: all 0.3s ease;
 	cursor: pointer;
-	border: none;
+	border: 1px solid rgba(255, 255, 255, 0.9);
+	border-radius: 2px;
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .div5 button:hover {
-	background: #4d6466;
-}
-.nav-img {
-	width: 8rem;
-	height: 8rem;
-	border-radius: 50%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
+	color: #2496ed;
+	border: 1px solid #2496ed;
 }
