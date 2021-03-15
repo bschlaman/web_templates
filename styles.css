@@ -249,6 +249,7 @@ body {
 	height: 21rem;
 	width: 18rem;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 1rem 1rem 1rem 1rem;
 	margin: 1rem;
 }
 .card-top {
@@ -261,17 +262,17 @@ body {
 	border-radius: 1rem 1rem 0 0;
 }
 .card-bottom {
+	box-sizing: border-box;
 	height: 70%;
 	background: #f4f4f4;
 	color: rgba(0, 0, 0, 0.8);
 	border-radius: 0 0 1rem 1rem;
+	padding: 1rem 1rem 0 1rem;
 }
 .card-bottom p {
 	font-size: 0.8rem;
-	margin: 1rem;
 }
 .card-bottom a {
-	margin: 1rem;
 }
 .card-bottom ul {
 	text-align: center;
