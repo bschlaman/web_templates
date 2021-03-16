@@ -19,6 +19,9 @@ table, th, td {
 a {
 	text-decoration: none;
 }
+input, select, textarea, button {
+	font-family: inherit;
+}
 
 /* global */
 body {
@@ -228,7 +231,6 @@ body {
 }
 .div5 button {
 	background: #242729;
-	transition: all 0.3s ease;
 	cursor: pointer;
 	border: 1px solid rgba(255, 255, 255, 0.9);
 	border-radius: 2px;
@@ -241,19 +243,20 @@ body {
 
 /* div6: cards */
 .cards-wrapper {
+	font-family: "Quicksand", sans-serif;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
 .card {
-	height: 21rem;
+	height: 23rem;
 	width: 18rem;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	border-radius: 1rem 1rem 1rem 1rem;
 	margin: 1rem;
 }
 .card-top {
-	height: 30%;
+	height: 22%;
 	background: #242729;
 	color: rgba(255, 255, 255, 0.8);
 	display: flex;
@@ -261,25 +264,76 @@ body {
 	justify-content: center;
 	border-radius: 1rem 1rem 0 0;
 }
+.card-top p {
+	font-size: 1.4rem;
+}
 .card-bottom {
 	box-sizing: border-box;
-	height: 70%;
+	height: 78%;
 	background: #f4f4f4;
 	color: rgba(0, 0, 0, 0.8);
 	border-radius: 0 0 1rem 1rem;
 	padding: 1rem 1rem 0 1rem;
 }
 .card-bottom p {
-	font-size: 0.8rem;
-}
-.card-bottom a {
+	font-size: 1rem;
+	margin: 0 0 1rem 0;
 }
 .card-bottom ul {
 	text-align: center;
 	padding: 0;
 }
 .card-bottom li {
-	font-size: 0.7rem;
+	font-family: "Montserrat", sans-serif;
+	font-size: 0.8rem;
 	display: inline-block;
 	margin: 0.3rem 1.2rem;
 }
+
+/* div7: contact form */
+.contact-form-wrapper {
+	max-width: 40%;
+	margin: 0 auto;
+	padding: 1rem;
+	background: #242729;
+	border-radius: 0.5rem;
+}
+.contact-form-wrapper input[type=text],
+.contact-form-wrapper textarea {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.8rem;
+	margin: 0.5rem 0;
+	border-radius: 0.5rem;
+}
+.contact-form-wrapper input[type=text]:focus,
+.contact-form-wrapper textarea:focus {
+	outline: 0;
+	box-shadow: 0 0 0 2pt #2496ed;
+}
+.contact-form-wrapper input[type=text]:nth-child(1) {
+	width: 49%;
+	float: left;
+}
+.contact-form-wrapper input[type=text]:nth-child(2) {
+	width: 49%;
+	float: right;
+}
+.contact-form-wrapper textarea {
+	resize: none;
+	height: 8rem;
+}
+.contact-form-wrapper button {
+	background: #242729;
+	cursor: pointer;
+	border: 1px solid rgba(255, 255, 255, 0.9);
+	border-radius: 2px;
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 1.4rem;
+}
+.contact-form-wrapper button:hover {
+	color: #2496ed;
+	border: 1px solid #2496ed;
+}
+/* div8: chessboard */
