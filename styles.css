@@ -45,6 +45,13 @@ body {
 	outline: 2px solid blue;
 }
 
+/* back to top */
+.back-to-top {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+}
+
 /* the rules */
 .code-snippet-css {
 	background: #f5eccb;	
@@ -336,4 +343,19 @@ body {
 	color: #2496ed;
 	border: 1px solid #2496ed;
 }
+
 /* div8: chessboard */
+.chessboard {
+	height: 32rem;
+	width: 32rem;
+	margin: auto;
+}
+.chessboard tr:nth-child(odd) td:nth-child(odd) {
+	background: grey;
+}
+.chessboard tr:nth-child(even) td:nth-child(even) {
+	background: grey;
+}
+/*.chessboard td:nth-child(even) {*/
+/*	background: grey;*/
+/*}*/
