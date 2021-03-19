@@ -52,13 +52,14 @@ window.onload = function(){
 	setPiece(boardState.pieces, "bp", "b7");
 	setPiece(boardState.pieces, "wp", "c6");
 	setPiece(boardState.pieces, "wr", "a1");
+	console.log(boardState);
 
-	createHTMLPieces(boardState.pieces);
+	// createHTMLPieces(boardState.pieces, pieceFileNames);
 
-	let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
-	for(let i = 0 ; i < pieceImages.length ; i++){
-		makeDragable(pieceImages[i]);
-	}
+	// let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
+	// for(let i = 0 ; i < pieceImages.length ; i++){
+	// 	makeDragable(pieceImages[i]);
+	// }
 }
 
 function makeDragable(element){
@@ -104,28 +105,15 @@ function setPiece(pieces, piece, alg){
 	pieces[helperFunctions.algToSq120(alg)] = piece;
 }
 
-function createHTMLPieces(pieces){
+function createHTMLPieces(pieces, pieceFileNames){
 	let squareSize = document.querySelector(".chessboard td").clientWidth;
+	// p is the sq120 number
 	for(let p of pieces){
 		let img = document.createElement("img");
-		let path = pieceFileNames[pieces[p]];
-		switch(pieces[p]){
-			case "bp": path = pieceFileNames.bp; break;
-			case "bn": path = pieceFileNames.bn; break;
-			case "bb": path = pieceFileNames.bb; break;
-			case "br": path = pieceFileNames.br; break;
-			case "bq": path = pieceFileNames.bq; break;
-			case "bk": path = pieceFileNames.bk; break;
-			case "wp": path = pieceFileNames.wp; break;
-			case "wn": path = pieceFileNames.wn; break;
-			case "wb": path = pieceFileNames.wb; break;
-			case "wr": path = pieceFileNames.wr; break;
-			case "wq": path = pieceFileNames.wq; break;
-			case "wk": path = pieceFileNames.wk; break;
-		}
-		let [row, col] = helperFunctions.algToRC(alg);
-		element.style.left = (col * squareSize) + "px";
-		element.style.top = (row * squareSize) + "px";
+		img.src = pieceFileNames[pieces[p]];
+		let [row, col] = helperFunctions.algToRC(helperFunctions.sq120ToAlg(p));
+		img.style.left = (col * squareSize) + "px";
+		img.style.top = (row * squareSize) + "px";
 	}
 }
 
