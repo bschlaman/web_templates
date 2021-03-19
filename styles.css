@@ -381,9 +381,3 @@ body {
 .chessboard-wrapper .alg p:nth-child(even) {
 	color: white;
 }
-.cbp {
-	position: absolute;
-	z-index: 2;
-	width: 12.5%;
-	height: 12.5%;
-}

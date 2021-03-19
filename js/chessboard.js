@@ -20,18 +20,18 @@ window.onload = function(){
 	let testFen = "1r1qkb1r/1bp2pp1/p2p1n1p/3Np3/2pPP3/5N2/PPPQ1PPP/R1B2RK1 w k - 0 13";
 
 	const pieceFileNames = {
-		bp: "pawn_black_60.png",
-		bn: "night_black_60.png",
-		bb: "bishop_black_60.png",
-		br: "rook_black_60.png",
-		bq: "queen_black_60.png",
-		bk: "king_black_60.png",
-		wp: "pawn_white_60.png",
-		wn: "night_white_60.png",
-		wb: "bishop_white_60.png",
-		wr: "rook_white_60.png",
-		wq: "queen_white_60.png",
-		wk: "king_white_60.png",
+		bp: "images/pieces/pawn_black_60.png",
+		bn: "images/pieces/night_black_60.png",
+		bb: "images/pieces/bishop_black_60.png",
+		br: "images/pieces/rook_black_60.png",
+		bq: "images/pieces/queen_black_60.png",
+		bk: "images/pieces/king_black_60.png",
+		wp: "images/pieces/pawn_white_60.png",
+		wn: "images/pieces/night_white_60.png",
+		wb: "images/pieces/bishop_white_60.png",
+		wr: "images/pieces/rook_white_60.png",
+		wq: "images/pieces/queen_white_60.png",
+		wk: "images/pieces/king_white_60.png",
 	};
 
 	let boardState = {
@@ -52,14 +52,13 @@ window.onload = function(){
 	setPiece(boardState.pieces, "bp", "b7");
 	setPiece(boardState.pieces, "wp", "c6");
 	setPiece(boardState.pieces, "wr", "a1");
-	console.log(boardState);
 
-	// createHTMLPieces(boardState.pieces, pieceFileNames);
+	createHTMLPieces(boardState.pieces, pieceFileNames);
 
-	// let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
-	// for(let i = 0 ; i < pieceImages.length ; i++){
-	// 	makeDragable(pieceImages[i]);
-	// }
+	let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
+	for(let i = 0 ; i < pieceImages.length ; i++){
+		makeDragable(pieceImages[i]);
+	}
 }
 
 function makeDragable(element){
@@ -99,6 +98,8 @@ function snapToBoard(element){
 	let row = Math.floor((element.offsetTop+element.clientHeight/2) / squareSize);
 	element.style.left = (col * squareSize) + "px";
 	element.style.top = (row * squareSize) + "px";
+	// simple scenenario for now, just removing the piece that's there
+	let i = helperFunctions.rcToSq120(row, col);
 }
 
 function setPiece(pieces, piece, alg){
@@ -107,21 +108,21 @@ function setPiece(pieces, piece, alg){
 
 function createHTMLPieces(pieces, pieceFileNames){
 	let squareSize = document.querySelector(".chessboard td").clientWidth;
+	let piecesContainer = document.querySelector(".chessboard-pieces");
 	// p is the sq120 number
-	for(let p of pieces){
-		let img = document.createElement("img");
-		img.src = pieceFileNames[pieces[p]];
-		let [row, col] = helperFunctions.algToRC(helperFunctions.sq120ToAlg(p));
-		img.style.left = (col * squareSize) + "px";
-		img.style.top = (row * squareSize) + "px";
+	for(let i = 0 ; i < 120 ; i++){
+		if(pieces[i] != null){
+			let img = document.createElement("img");
+			img.src = pieceFileNames[pieces[i]];
+			let [row, col] = helperFunctions.algToRC(helperFunctions.sq120ToAlg(i));
+			img.style.left = (col * squareSize) + "px";
+			img.style.top = ((7-row) * squareSize) + "px";
+			img.style.position = "absolute";
+			img.style.width = "12.5%";
+			img.style.height = "12.5%";
+			piecesContainer.appendChild(img);
+		}
 	}
-}
-
-function createPiece(element, alg){
-	let squareSize = document.querySelector(".chessboard td").clientWidth;
-	let [row, col] = helperFunctions.algToRC(alg);
-	element.style.left = (col * squareSize) + "px";
-	element.style.top = (row * squareSize) + "px";
 }
 
 function updateSide(){
@@ -225,11 +226,15 @@ var helperFunctions = function(){
 		let rank = 1 + ((sq64 - sq64 % 8) / 8);
 		return String.fromCharCode(file + 97) + rank.toString();
 	}
+	function rcToSq120(row, col){
+		return sq64To120(col + 8 * row);
+	}
 	helperFunctions.sq120To64 = sq120To64;
 	helperFunctions.sq64To120 = sq64To120;
 	helperFunctions.algToRC = algToRC;
 	helperFunctions.algToSq120 = algToSq120;
 	helperFunctions.sq120ToAlg = sq120ToAlg;
+	helperFunctions.rcToSq120 = rcToSq120;
 }
 
 var setFEN = function(fen){
