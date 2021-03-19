@@ -45,18 +45,20 @@ window.onload = function(){
 	helperFunctions();
 
 	// put the pieces where i want in pieces[] and then use the array to put them on the board
+	setPiece(boardState.pieces, "bk", "a8");
+	setPiece(boardState.pieces, "bb", "b8");
+	setPiece(boardState.pieces, "wk", "c8");
+	setPiece(boardState.pieces, "bp", "a7");
+	setPiece(boardState.pieces, "bp", "b7");
+	setPiece(boardState.pieces, "wp", "c6");
+	setPiece(boardState.pieces, "wr", "a1");
+
+	createHTMLPieces(boardState.pieces);
 
 	let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
 	for(let i = 0 ; i < pieceImages.length ; i++){
 		makeDragable(pieceImages[i]);
 	}
-	createPiece(document.getElementById("piece1"), "a8");
-	createPiece(document.getElementById("piece2"), "b8");
-	createPiece(document.getElementById("piece3"), "c8");
-	createPiece(document.getElementById("piece4"), "a7");
-	createPiece(document.getElementById("piece5"), "b7");
-	createPiece(document.getElementById("piece6"), "c6");
-	createPiece(document.getElementById("piece7"), "a1");
 }
 
 function makeDragable(element){
@@ -96,6 +98,35 @@ function snapToBoard(element){
 	let row = Math.floor((element.offsetTop+element.clientHeight/2) / squareSize);
 	element.style.left = (col * squareSize) + "px";
 	element.style.top = (row * squareSize) + "px";
+}
+
+function setPiece(pieces, piece, alg){
+	pieces[helperFunctions.algToSq120(alg)] = piece;
+}
+
+function createHTMLPieces(pieces){
+	let squareSize = document.querySelector(".chessboard td").clientWidth;
+	for(let p of pieces){
+		let img = document.createElement("img");
+		let path = pieceFileNames[pieces[p]];
+		switch(pieces[p]){
+			case "bp": path = pieceFileNames.bp; break;
+			case "bn": path = pieceFileNames.bn; break;
+			case "bb": path = pieceFileNames.bb; break;
+			case "br": path = pieceFileNames.br; break;
+			case "bq": path = pieceFileNames.bq; break;
+			case "bk": path = pieceFileNames.bk; break;
+			case "wp": path = pieceFileNames.wp; break;
+			case "wn": path = pieceFileNames.wn; break;
+			case "wb": path = pieceFileNames.wb; break;
+			case "wr": path = pieceFileNames.wr; break;
+			case "wq": path = pieceFileNames.wq; break;
+			case "wk": path = pieceFileNames.wk; break;
+		}
+		let [row, col] = helperFunctions.algToRC(alg);
+		element.style.left = (col * squareSize) + "px";
+		element.style.top = (row * squareSize) + "px";
+	}
 }
 
 function createPiece(element, alg){
