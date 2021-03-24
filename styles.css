@@ -381,3 +381,15 @@ body {
 .chessboard-wrapper .alg p:nth-child(even) {
 	color: white;
 }
+
+/* div9: certifications */
+
+/* div10: snapshots */
+.snapshots-wrapper table,
+.snapshots-wrapper th,
+.snapshots-wrapper td {
+	border: 1px solid black;
+}
+.snapshots-wrapper td {
+	padding: 0 0.5rem;
+}
