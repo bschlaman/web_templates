@@ -54,6 +54,7 @@ window.onload = function(){
 	setPiece(boardState.pieces, "wr", "a1");
 
 	createHTMLPieces(boardState.pieces, pieceFileNames);
+	console.log(boardState);
 
 	let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
 	for(let i = 0 ; i < pieceImages.length ; i++){
@@ -68,11 +69,13 @@ function makeDragable(element){
 	element.onmousedown = (e) => {
 		e = e || window.event;
 		e.preventDefault();
+		element.style.zIndex = "2";
 		cursorStartX = e.clientX;
 		cursorStartY = e.clientY;
 		document.onmouseup = () => {
 			document.onmouseup = null;
 			document.onmousemove = null;
+			element.style.zIndex = "1";
 			snapToBoard(element);
 		};
     document.onmousemove = (e) => {
@@ -98,8 +101,13 @@ function snapToBoard(element){
 	let row = Math.floor((element.offsetTop+element.clientHeight/2) / squareSize);
 	element.style.left = (col * squareSize) + "px";
 	element.style.top = (row * squareSize) + "px";
+	let alg = helperFunctions.sq120ToAlg(helperFunctions.rcToSq120(row, col));
 	// simple scenenario for now, just removing the piece that's there
-	let i = helperFunctions.rcToSq120(row, col);
+	let toPiece = document.querySelector(".chessboard-pieces .sq-" + alg);
+	if(toPiece && element != toPiece){
+		toPiece.remove();
+	}
+	element.className = "sq-" + alg;
 }
 
 function setPiece(pieces, piece, alg){
@@ -113,10 +121,11 @@ function createHTMLPieces(pieces, pieceFileNames){
 	for(let i = 0 ; i < 120 ; i++){
 		if(pieces[i] != null){
 			let img = document.createElement("img");
+			img.className = "sq-" + helperFunctions.sq120ToAlg(i);
 			img.src = pieceFileNames[pieces[i]];
 			let [row, col] = helperFunctions.algToRC(helperFunctions.sq120ToAlg(i));
 			img.style.left = (col * squareSize) + "px";
-			img.style.top = ((7-row) * squareSize) + "px";
+			img.style.top = (row * squareSize) + "px";
 			img.style.position = "absolute";
 			img.style.width = "12.5%";
 			img.style.height = "12.5%";
@@ -213,12 +222,13 @@ var helperFunctions = function(){
 	function sq64To120(sq64){
 		return sq64 + 21 + 2 * (sq64 - sq64 % 8) / 8;
 	}
+	// row 0 is at the top; used for html positioning
 	function algToRC(alg){
 		return [8 - parseInt(alg.charAt(1)), alg.charCodeAt(0) - 97];
 	}
 	function algToSq120(alg){
 		let [row, col] = algToRC(alg);
-		return sq64To120(col + 8 * row);
+		return sq64To120(col + 8 * (7 - row));
 	}
 	function sq120ToAlg(sq120){
 		let sq64 = sq120To64(sq120);
@@ -227,7 +237,7 @@ var helperFunctions = function(){
 		return String.fromCharCode(file + 97) + rank.toString();
 	}
 	function rcToSq120(row, col){
-		return sq64To120(col + 8 * row);
+		return sq64To120(col + 8 * (7 - row));
 	}
 	helperFunctions.sq120To64 = sq120To64;
 	helperFunctions.sq64To120 = sq64To120;
