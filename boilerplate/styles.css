@@ -1,0 +1,30 @@
+/*
+	### SETUP
+*/
+
+/* wire-framing */
+div:not(.wrapper):not(.showcase) {
+	/*border: 1px solid black;*/
+}
+
+/* defaults */
+html {
+/*	scroll-behavior: smooth;*/
+/*	-webkit-tap-highlight-color: transparent;*/
+/*	box-sizing: border-box;*/
+}
+a {
+	text-decoration: none;
+}
+input, select, textarea, button {
+	font-family: inherit;
+}
+
+/* global */
+body {
+	font-family: "Montserrat", sans-serif;
+}
+
+/*
+	### CONTENT
+*/
