@@ -183,15 +183,18 @@
 		<div class="showcase div7">
 			<h2>Contact Form</h2>
 			<div class="contact-form-wrapper">
-				<form action="https://www.schlamalama.com/message/index.php" method="POST">
+				<form action="../message/index.php" method="POST">
+					<p>Name</p>
 					<input type="text" name="fname" placeholder="First Name" onkeydown="return event.key != 'Enter';">
 					<input type="text" name="lname" placeholder="Last Name" onkeydown="return event.key != 'Enter';">
+					<p>Email</p>
 					<input type="text" name="email" placeholder="Email" onkeydown="return event.key != 'Enter';">
+					<p>Subject</p>
 					<input type="text" name="subject" placeholder="Subject" onkeydown="return event.key != 'Enter';">
+					<p>Message</p>
 					<textarea name="message" placeholder="Message"></textarea>
 					<button name="submit_form">Contact Me</button>
 				</form>
-				<!-- outside the form to avoid implicit submission -->
 			</div>
 		</div>
 

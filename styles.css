@@ -302,6 +302,10 @@ body {
 	background: #242729;
 	border-radius: 0.5rem;
 }
+.contact-form-wrapper p {
+	color: rgba(255, 255, 255, 0.9);
+	margin: 0.5rem 0 0 0;
+}
 .contact-form-wrapper input[type=text],
 .contact-form-wrapper textarea {
 	width: 100%;
@@ -315,11 +319,11 @@ body {
 	outline: 0;
 	box-shadow: 0 0 0 2pt #2496ed;
 }
-.contact-form-wrapper input[type=text]:nth-child(1) {
+.contact-form-wrapper input[type=text]:nth-of-type(1) {
 	width: 49%;
 	float: left;
 }
-.contact-form-wrapper input[type=text]:nth-child(2) {
+.contact-form-wrapper input[type=text]:nth-of-type(2) {
 	width: 49%;
 	float: right;
 }
