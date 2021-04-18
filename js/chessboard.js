@@ -40,26 +40,18 @@ window.onload = function(){
 		enPas: "-",
 	};
 
+	// setting this variable globally to be used by reset button
+	window.boardState = boardState;
+	window.pieceFileNames = pieceFileNames;
+
 	// load helper functions
 	// TODO: this is clunky
 	helperFunctions();
 
-	// put the pieces where i want in pieces[] and then use the array to put them on the board
-	setPiece(boardState.pieces, "bk", "a8");
-	setPiece(boardState.pieces, "bb", "b8");
-	setPiece(boardState.pieces, "wk", "c8");
-	setPiece(boardState.pieces, "bp", "a7");
-	setPiece(boardState.pieces, "bp", "b7");
-	setPiece(boardState.pieces, "wp", "c6");
-	setPiece(boardState.pieces, "wr", "a1");
+	createPosition(boardState.pieces);
 
+	// create DOM elements for the pieces based on pieces array
 	createHTMLPieces(boardState.pieces, pieceFileNames);
-	console.log(boardState);
-
-	let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
-	for(let i = 0 ; i < pieceImages.length ; i++){
-		makeDragable(pieceImages[i]);
-	}
 }
 
 function makeDragable(element){
@@ -110,13 +102,29 @@ function snapToBoard(element){
 	element.className = "sq-" + alg;
 }
 
-function setPiece(pieces, piece, alg){
-	pieces[helperFunctions.algToSq120(alg)] = piece;
+// wrapper function for setting a position
+// TODO: is there a better way to encode a postion, like FEN?
+function createPosition(pieces){
+	function setPiece(pieces, piece, alg){
+		pieces[helperFunctions.algToSq120(alg)] = piece;
+	}
+	// put the pieces where i want in pieces[] and then use the array to put them on the board
+	setPiece(pieces, "bk", "a8");
+	setPiece(pieces, "bb", "b8");
+	setPiece(pieces, "wk", "c8");
+	setPiece(pieces, "bp", "a7");
+	setPiece(pieces, "bp", "b7");
+	setPiece(pieces, "wp", "c6");
+	setPiece(pieces, "wr", "a1");
 }
 
 function createHTMLPieces(pieces, pieceFileNames){
 	let squareSize = document.querySelector(".chessboard td").clientWidth;
 	let piecesContainer = document.querySelector(".chessboard-pieces");
+	// clear the container
+	while(piecesContainer.firstChild){
+		piecesContainer.removeChild(piecesContainer.firstChild);
+	}
 	// p is the sq120 number
 	for(let i = 0 ; i < 120 ; i++){
 		if(pieces[i] != null){
@@ -131,6 +139,11 @@ function createHTMLPieces(pieces, pieceFileNames){
 			img.style.height = "12.5%";
 			piecesContainer.appendChild(img);
 		}
+	}
+	// make the piece img DOM elements dragable
+	let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
+	for(let i = 0 ; i < pieceImages.length ; i++){
+		makeDragable(pieceImages[i]);
 	}
 }
 

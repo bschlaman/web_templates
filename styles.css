@@ -347,22 +347,28 @@ body {
 
 /* div8: chessboard */
 .chessboard-wrapper {
-	position: relative;
-	height: 32rem;
 	width: 32rem;
 	margin: auto;
 }
 .chessboard {
+	position: relative;
+	height: 32rem;
+}
+.chessboard-wrapper button {
+	float: right;
+	margin: 0.5rem 0.5rem 0 0;
+}
+.chessboard table {
 	border-collapse: collapse;
 	width: 100%;
 	height: 100%;
 	outline: 1px solid black;
 }
-.chessboard tr:nth-child(odd) td:nth-child(odd),
-.chessboard tr:nth-child(even) td:nth-child(even) {
+.chessboard table tr:nth-child(odd) td:nth-child(odd),
+.chessboard table tr:nth-child(even) td:nth-child(even) {
 	background: #242729;
 }
-.chessboard-wrapper .ranks {
+.chessboard .ranks {
 	position: absolute;
 	display: flex;
 	flex-flow: column-reverse;
@@ -371,18 +377,18 @@ body {
 	left: 0.5rem;
 	height: 100%;
 }
-.chessboard-wrapper .files {
+.chessboard .files {
 	display: flex;
 	position: absolute;
 	bottom: 0.5rem;
 	left: 0.5rem;
 	width: 100%;
 }
-.chessboard-wrapper .alg p {
+.chessboard .alg p {
 	flex: auto;
 	margin: 0;
 }
-.chessboard-wrapper .alg p:nth-child(even) {
+.chessboard .alg p:nth-child(even) {
 	color: white;
 }
 
