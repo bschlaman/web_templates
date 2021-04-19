@@ -349,6 +349,8 @@ body {
 .chessboard-wrapper {
 	width: 32rem;
 	margin: auto;
+	/* needed so the floated button remains in flow */
+	display: flow-root;
 }
 .chessboard {
 	position: relative;

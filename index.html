@@ -20,6 +20,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 	<script src="js/chessboard.js"></script>
+	<script src="js/comments.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -183,7 +184,7 @@
 		<div class="showcase div7">
 			<h2>Contact Form</h2>
 			<div class="contact-form-wrapper">
-				<form action="../message/index.php" method="POST">
+				<form action="../message/index.php" method="POST" target="_blank">
 					<p>Name</p>
 					<input type="text" name="fname" placeholder="First Name" onkeydown="return event.key != 'Enter';">
 					<input type="text" name="lname" placeholder="Last Name" onkeydown="return event.key != 'Enter';">
@@ -224,6 +225,22 @@
 		<!-- div9 -->
 		<div class="showcase div9">
 			<h2>Certifications</h2>
+		</div>
+
+		<!-- div10 -->
+		<div class="showcase div10">
+			<h2>Comments Section</h2>
+			<div class="comment-section-wrapper">
+				<div class="comment-create">
+					<input type="text" name="comment" placeholder="Type comment" onkeydown="return event.key != 'Enter';">
+				</div>
+				<button onclick="postComment(comment.value);">Post</button>
+				<div class="comments">
+					<p>comment 1</p>
+					<p>comment 2</p>
+					<p>comment 3</p>
+				</div>
+			</div>
 		</div>
 
 
