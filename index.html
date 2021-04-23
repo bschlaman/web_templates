@@ -186,14 +186,14 @@
 			<div class="contact-form-wrapper">
 				<form action="../message/index.php" method="POST" target="_blank">
 					<p>Name</p>
-					<input type="text" name="fname" placeholder="First Name" onkeydown="return event.key != 'Enter';">
-					<input type="text" name="lname" placeholder="Last Name" onkeydown="return event.key != 'Enter';">
+					<input type="text" name="fname" required placeholder="First Name" onkeydown="return event.key != 'Enter';">
+					<input type="text" name="lname" required placeholder="Last Name" onkeydown="return event.key != 'Enter';">
 					<p>Email</p>
-					<input type="text" name="email" placeholder="Email" onkeydown="return event.key != 'Enter';">
+					<input type="text" name="email" required placeholder="Email" onkeydown="return event.key != 'Enter';">
 					<p>Subject</p>
-					<input type="text" name="subject" placeholder="Subject" onkeydown="return event.key != 'Enter';">
+					<input type="text" name="subject" required placeholder="Subject" onkeydown="return event.key != 'Enter';">
 					<p>Message</p>
-					<textarea name="message" placeholder="Message"></textarea>
+					<textarea name="message" required placeholder="Message"></textarea>
 					<button name="submit_form">Contact Me</button>
 				</form>
 			</div>
@@ -225,6 +225,26 @@
 		<!-- div9 -->
 		<div class="showcase div9">
 			<h2>Certifications</h2>
+			<div class="certifications-wrapper">
+				<!-- cert -->
+				<div class="certification">
+					<img src="images/aws-sol-arch-assoc.png"/>
+					<div class="certification-description">
+						<p>AWS Solutions Architect Associate</p>
+						<p><em>April 2021</em></p>
+					</div>
+				</div>
+				<!-- endcert -->
+				<!-- cert -->
+				<div class="certification">
+					<img src="images/mulesoft-developer.png"/>
+					<div class="certification-description">
+						<p>Mulesoft Certified Developer</p>
+						<p><em>April 2020</em></p>
+					</div>
+				</div>
+				<!-- endcert -->
+			</div>
 		</div>
 
 		<!-- div10 -->
@@ -234,7 +254,7 @@
 				<div class="comment-create">
 					<input type="text" name="comment" placeholder="Type comment" onkeydown="return event.key != 'Enter';">
 				</div>
-				<button onclick="postComment(comment.value);">Post</button>
+				<button onclick="postComment();">Post</button>
 				<div class="comments">
 					<p>comment 1</p>
 					<p>comment 2</p>

@@ -2,11 +2,11 @@
 	### SETUP
 */
 
-/* wire-framing */
-div:not(.wrapper):not(.showcase) {
-	/*border: 1px solid black;*/
+:root {
+	--color1: #f4f4f4;
+	--color2: #242729;
+	--font: "Montserrat", sans-serif;
 }
-
 /* defaults */
 html {
 /*	scroll-behavior: smooth;*/
@@ -22,8 +22,14 @@ input, select, textarea, button {
 
 /* global */
 body {
-	font-family: "Montserrat", sans-serif;
+	font-family: var(--font);
 }
+
+/* wire-framing */
+div:not(.wrapper):not(.showcase) {
+	/*border: 1px solid black;*/
+}
+
 
 /*
 	### CONTENT
@@ -59,7 +65,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	padding: 2rem;
-	background: #f4f4f4;
+	background: var(--color1);
 }
 .rules-color {
 	display: flex;
@@ -172,9 +178,9 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem 5%;
-	background: #242729;
+	background: var(--color2);
 }
-.div5 img {
+.nav-bar img {
 	border-radius: 50%;
 	object-fit: cover;
 	height: 4rem;
@@ -234,7 +240,7 @@ body {
 	transform: scaleX(1);
 }
 .div5 button {
-	background: #242729;
+	background: var(--color2);
 	cursor: pointer;
 	border: 1px solid rgba(255, 255, 255, 0.9);
 	border-radius: 2px;
@@ -261,7 +267,7 @@ body {
 }
 .card-top {
 	height: 22%;
-	background: #242729;
+	background: var(--color2);
 	color: rgba(255, 255, 255, 0.8);
 	display: flex;
 	align-items: center;
@@ -269,12 +275,13 @@ body {
 	border-radius: 1rem 1rem 0 0;
 }
 .card-top p {
+	text-align: center;
 	font-size: 1.4rem;
 }
 .card-bottom {
 	box-sizing: border-box;
 	height: 78%;
-	background: #f4f4f4;
+	background: var(--color1);
 	color: rgba(0, 0, 0, 0.8);
 	border-radius: 0 0 1rem 1rem;
 	padding: 1rem 1rem 0 1rem;
@@ -288,7 +295,7 @@ body {
 	padding: 0;
 }
 .card-bottom li {
-	font-family: "Montserrat", sans-serif;
+	font-family: var(--font);
 	font-size: 0.8rem;
 	display: inline-block;
 	margin: 0.3rem 1.2rem;
@@ -299,7 +306,7 @@ body {
 	max-width: 40%;
 	margin: 0 auto;
 	padding: 1rem;
-	background: #242729;
+	background: var(--color2);
 	border-radius: 0.5rem;
 }
 .contact-form-wrapper p {
@@ -332,7 +339,7 @@ body {
 	height: 8rem;
 }
 .contact-form-wrapper button {
-	background: #242729;
+	background: var(--color2);
 	cursor: pointer;
 	border: 1px solid rgba(255, 255, 255, 0.9);
 	border-radius: 2px;
@@ -368,7 +375,7 @@ body {
 }
 .chessboard table tr:nth-child(odd) td:nth-child(odd),
 .chessboard table tr:nth-child(even) td:nth-child(even) {
-	background: #242729;
+	background: var(--color2);
 }
 .chessboard .ranks {
 	position: absolute;
@@ -395,4 +402,35 @@ body {
 }
 
 /* div9: certifications */
+.certifications-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-end;
+}
+.certification {
+	text-align: center;
+	margin: 1rem;
+}
+.certification img {
+	width: 8rem;
+	vertical-align: middle;
+}
+.certification:nth-of-type(2) img {
+	width: 14rem;
+	margin-bottom: 1.5rem;
+}
+.certification-description {
+	border-top: 2px solid #2496ed;
+	margin: 2rem;
+	padding: 0 1rem 0 1rem;
+}
+.certification-description p:nth-of-type(1) {
+	margin-bottom: 0;
+}
+.certification-description p:nth-of-type(2) {
+	font-size: 0.8rem;
+}
+
+/* div10: comments section */
 
