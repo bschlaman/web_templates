@@ -3,10 +3,15 @@
 */
 
 :root {
+	/* off white */
 	--color1: #f4f4f4;
+	/* charcoal */
 	--color2: #242729;
+	/* blue highlight */
+	--color3: #2496ed;
 	--font: "Montserrat", sans-serif;
 }
+
 /* defaults */
 html {
 /*	scroll-behavior: smooth;*/
@@ -205,50 +210,50 @@ div:not(.wrapper):not(.showcase) {
 	font-size: 1.2vw;
 	margin: 0.2vw;
 }
-.div5 a, .div5 button {
+.nav-bar a, .nav-bar button {
 	font-size: 1rem;
 	color: rgba(255, 255, 255, 0.9);
 }
-.div5 ul {
+.nav-bar ul {
 	padding: 0;
 }
-.div5 li {
+.nav-bar li {
 	list-style: none;
 	display: inline-block;
 	padding: 0 0.8rem;
 }
-.div5 li a {
+.nav-bar li a {
 	/* so that after can be positioned relative to it */
 	position: relative;
 	transition: all 0.3s ease;
 }
-.div5 li a:hover {
-	color: #2496ed;
+.nav-bar li a:hover {
+	color: var(--color3);
 }
-.div5 li a::after {
+.nav-bar li a::after {
 	content: "";
 	position: absolute;
 	bottom: -0.1rem;
 	left: 0;
 	right: 0;
 	height: 0.1rem;
-	background: #2496ed;
+	background: var(--color3);
 	transform: scaleX(0);
 	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.div5 li a:hover::after {
+.nav-bar li a:hover::after {
 	transform: scaleX(1);
 }
-.div5 button {
+.nav-bar button {
 	background: var(--color2);
 	cursor: pointer;
 	border: 1px solid rgba(255, 255, 255, 0.9);
 	border-radius: 2px;
 	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.div5 button:hover {
-	color: #2496ed;
-	border: 1px solid #2496ed;
+.nav-bar button:hover {
+	color: var(--color3);
+	border: 1px solid var(--color3);
 }
 
 /* div6: cards */
@@ -324,7 +329,7 @@ div:not(.wrapper):not(.showcase) {
 .contact-form-wrapper input[type=text]:focus,
 .contact-form-wrapper textarea:focus {
 	outline: 0;
-	box-shadow: 0 0 0 2pt #2496ed;
+	box-shadow: 0 0 0 2pt var(--color3);
 }
 .contact-form-wrapper input[type=text]:nth-of-type(1) {
 	width: 49%;
@@ -348,8 +353,8 @@ div:not(.wrapper):not(.showcase) {
 	font-size: 1.4rem;
 }
 .contact-form-wrapper button:hover {
-	color: #2496ed;
-	border: 1px solid #2496ed;
+	color: var(--color3);
+	border: 1px solid var(--color3);
 }
 
 /* div8: chessboard */
@@ -421,7 +426,7 @@ div:not(.wrapper):not(.showcase) {
 	margin-bottom: 1.5rem;
 }
 .certification-description {
-	border-top: 2px solid #2496ed;
+	border-top: 2px solid var(--color3);
 	margin: 2rem;
 	padding: 0 1rem 0 1rem;
 }
