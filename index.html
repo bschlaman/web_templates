@@ -97,6 +97,16 @@
 				<p class="date-time">December 26, 2020</p>
 				<p>Scripting is the meat and potatoes of DevOps, and it's where I feel at ${HOME}.  The toolsets available to scripters like myself have an altogether different set of requirements than other programming languages.  A scripting language should be portable, interpreted, and infinitely extensible.  Runtime performance and memory management are but afterthoughts in scripts which can take hours to complete.  Bash fits the role perfectly, and it's my favorite language.  However, as a firm believer in the Unix philosophy, it was time to put my money where my mouth is.  It's why I chose to write my chess engine in C.</p>
 			</div>
+			<div class="blog-post">
+				<h3>On Efficient Move Generation</h3>
+				<p class="date-time">April 24, 2021</p>
+				<p>There are two methods I have tried in generating legal moves:</p>
+				<ul>
+					<li>Use a inCheck() method to determine if a move will leave the king in check</li>
+					<li>Keep a list of pinned pieces and treat their move options differently</li>
+				</ul>
+				<p>Both methods yielded similar perft results, neither of which were very good.  I need to refactor my legal move generation and make this process far more efficient.</p>
+			</div>
 		</div>
 
 		<!-- div4 -->
@@ -260,6 +270,13 @@
 					<p>comment 2</p>
 					<p>comment 3</p>
 				</div>
+			</div>
+		</div>
+
+		<!-- div11 -->
+		<div class="showcase div11">
+			<h2>Display Grid</h2>
+			<div class="comment-section-wrapper">
 			</div>
 		</div>
 
