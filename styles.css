@@ -444,4 +444,23 @@ div:not(.wrapper):not(.showcase) {
 /* div10: comments section */
 
 /* div11: display grid */
-
+.display-grid-wrapper {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.display-grid-wrapper .grid-cell {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: cornflowerblue;
+	font-size: 3rem;
+	color: white;
+	height: 100%;
+	width: 100%;
+	border-radius: 4px;
+	transition: all ease 200ms
+}
+.display-grid-wrapper .grid-cell:hover {
+	transform: scale(1.08);
+}
