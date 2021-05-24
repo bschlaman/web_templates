@@ -152,12 +152,12 @@ function updateSide(){
 }
 
 function switchSide(){
-	if(side == "white"){ side = "black"; }
-	else if(side == "black"){ side = "white"; }
+	if(side === "white"){ side = "black"; }
+	else if(side === "black"){ side = "white"; }
 	updateSide();
 }
 
-var getKSquare = function(i){
+function getKSquare(i){
 	let [r,c] = index2RC(i);
 	let avail = [];
 	let a = [-1, 1];
@@ -180,9 +180,9 @@ var getKSquare = function(i){
 	// specialSquares.push(rc2Index(mouseRow + 1 * r[x], mouseCol + 2 * c[y]));
 }
 
-var selectSquare = function(){
+function selectSquare(){
 	// console.log(rc2Index(mouseRow, mouseCol));
-	if(selSquare == -1){
+	if(selSquare === -1){
 		selSquare = rc2Index(mouseRow, mouseCol);
 	} else {
 		selSquare = blackView ? blackIndex(selSquare) : selSquare;
@@ -195,8 +195,8 @@ var selectSquare = function(){
 	}
 }
 
-var cumulativeOffset = function(element) {
-	var top = 0, left = 0;
+function cumulativeOffset(element) {
+	let top = 0, left = 0;
 	do {
 		top += element.offsetTop || 0;
 		left += element.offsetLeft || 0;
@@ -209,26 +209,26 @@ var cumulativeOffset = function(element) {
 	};
 }
 
-var blackIndex = function(i){
+function blackIndex(i){
 	return pieces.length - 1 - i;
 }
 
-var square = function(row, col){
+function square(row, col){
 	return String.fromCharCode(col+97) + (8-row);
 }
 
-var rc2Index = function(row, col){
+function rc2Index(row, col){
 	return 8 * row + col;
 }
 
-var index2RC = function(i){
+function index2RC(i){
 	let c = i % 8;
 	let r = (i-c) / 8;
 	return [r,c];
 }
 
 // helper functions
-var helperFunctions = function(){
+const helperFunctions = function(){
 	function sq120To64(sq120){
 		return sq120 - 17 - 2 * (sq120 - sq120 % 10) / 10;
 	}
@@ -260,7 +260,7 @@ var helperFunctions = function(){
 	helperFunctions.rcToSq120 = rcToSq120;
 }
 
-var setFEN = function(fen){
+function setFEN(fen){
 	let piece;
 	let rank = 8;
 	let file = 1;
@@ -307,22 +307,22 @@ var setFEN = function(fen){
 		}
 	}
 	let stateInfo = fen.split(' ');
-	side = stateInfo[1] == "b" ? "black" : "white";
+	side = stateInfo[1] === "b" ? "black" : "white";
 	castlePermission = stateInfo[2];
 	enPas = stateInfo[3];
 	updateSide();
 }
 
 // This can be written better
-var genFEN = function(){
+function genFEN(){
 	let fen = '';
 	let empty = 0;
 	for(let i = 0 ; i < pieces.length ; i++){
-		if(i % 8 == 0 && i > 0){
+		if(i % 8 === 0 && i > 0){
 			if(empty){ fen += empty; empty = 0; }
 			fen += "/";
 		}
-		if(pieces[i] == "-"){
+		if(pieces[i] === "-"){
 			empty++;
 		} else {
 			if(empty){ fen += empty; empty = 0; }
@@ -331,7 +331,7 @@ var genFEN = function(){
 	}
 	if(empty){ fen += empty; empty = 0; }
 	fen += ' ';
-	fen += side == "black" ? "b" : "w";
+	fen += side === "black" ? "b" : "w";
 	fen += ' ';
 	fen += castlePermission;
 	fen += ' ';
@@ -340,7 +340,7 @@ var genFEN = function(){
 	return fen;
 }
 
-var drawPieces = function(){
+function drawPieces(){
 	let canv = document.getElementById("canv");
 	let ctx = canv.getContext("2d");
 	let path;
@@ -375,8 +375,8 @@ var drawPieces = function(){
 }
 
 function formatPOSTData(object) {
-	var encodedString = '';
-	for (var key in object) {
+	let encodedString = '';
+	for (let key in object) {
 		if (object.hasOwnProperty(key)) {
 			if (encodedString.length > 0) {
 				encodedString += '&';
@@ -387,7 +387,7 @@ function formatPOSTData(object) {
 	return encodedString;
 }
 
-var randMove = function(){
+function randMove(){
 	let fen = genFEN();
 	let xhr = new XMLHttpRequest();
 	// let url = "http://192.168.1.90:5812/fen?fen=" + fen;
@@ -403,7 +403,7 @@ var randMove = function(){
 			// success
 			let randFEN = xhr.responseText.split('\n')[0];
 			console.log("res: " + randFEN);
-			if(randFEN == fen){
+			if(randFEN === fen){
 				alert("MATE");
 			} else {
 				let input = document.querySelectorAll("form input.input")[0];
@@ -415,7 +415,7 @@ var randMove = function(){
 	xhr.send();
 }
 
-var saveFEN = function(){
+function saveFEN(){
 	let fen = genFEN();
 	let url = './handle_input.php';
 
@@ -436,7 +436,7 @@ var saveFEN = function(){
 	xhr.send(formatPOSTData(payload));
 }
 
-var loadFEN = function(){
+function loadFEN(){
 	let url = './handle_input.php';
 
 	let xhr = new XMLHttpRequest();
@@ -460,7 +460,7 @@ var loadFEN = function(){
 	xhr.send();
 }
 
-var resetFEN = function(){
+function resetFEN(){
 	fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 	setFEN(fen);
 }
