@@ -8,8 +8,13 @@
 	/* charcoal */
 	--color2: #242729;
 	/* blue highlight */
-	--color3: #2496ed;
-	--font: "Montserrat", sans-serif;
+	--color3: #2996ed;
+	/* slightly transparent black */
+	--transp-black: rgba(0, 0, 0, 0.9);
+	/* slightly transparent white */
+	--transp-white: rgba(255, 255, 255, 0.9);
+/*	--font: "Montserrat", sans-serif;*/
+	--font: "Quicksand", sans-serif;
 }
 
 /* defaults */
@@ -188,9 +193,9 @@ div:not(.wrapper):not(.showcase) {
 .nav-bar img {
 	border-radius: 50%;
 	object-fit: cover;
-	height: 4rem;
-	width: 4rem;
-	box-shadow: 0 0 2pt 1pt black;
+	width: 6vw;
+	height: 6vw;
+	box-shadow: 0 0 2pt 1pt white;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -200,7 +205,7 @@ div:not(.wrapper):not(.showcase) {
 	margin-left: 1rem;
 }
 .contact p {
-	color: rgba(255, 255, 255, 0.9);
+	color: var(--transp-white);
 }
 .contact-name {
 	font-size: 1.4vw;
@@ -211,8 +216,8 @@ div:not(.wrapper):not(.showcase) {
 	margin: 0.2vw;
 }
 .nav-bar a, .nav-bar button {
-	font-size: 1rem;
-	color: rgba(255, 255, 255, 0.9);
+	font-size: 1.4vw;
+	color: var(--transp-white);
 }
 .nav-bar ul {
 	padding: 0;
@@ -220,7 +225,7 @@ div:not(.wrapper):not(.showcase) {
 .nav-bar li {
 	list-style: none;
 	display: inline-block;
-	padding: 0 0.8rem;
+	padding: 0 0.7vw;
 }
 .nav-bar li a {
 	/* so that after can be positioned relative to it */
@@ -247,7 +252,7 @@ div:not(.wrapper):not(.showcase) {
 .nav-bar button {
 	background: var(--color2);
 	cursor: pointer;
-	border: 1px solid rgba(255, 255, 255, 0.9);
+	border: 1px solid var(--transp-white);
 	border-radius: 2px;
 	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -277,7 +282,7 @@ div:not(.wrapper):not(.showcase) {
 .card-top {
 	height: 22%;
 	background: var(--color2);
-	color: rgba(255, 255, 255, 0.8);
+	color: var(--transp-white);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -291,7 +296,7 @@ div:not(.wrapper):not(.showcase) {
 	box-sizing: border-box;
 	height: 78%;
 	background: var(--color1);
-	color: rgba(0, 0, 0, 0.8);
+	color: var(--transp-black);
 	border-radius: 0 0 1rem 1rem;
 	padding: 1rem 1rem 0 1rem;
 }
@@ -319,7 +324,7 @@ div:not(.wrapper):not(.showcase) {
 	border-radius: 0.5rem;
 }
 .contact-form-wrapper p {
-	color: rgba(255, 255, 255, 0.9);
+	color: var(--transp-white);
 	margin: 0.5rem 0 0 0;
 }
 .contact-form-wrapper input[type=text],
@@ -350,10 +355,10 @@ div:not(.wrapper):not(.showcase) {
 .contact-form-wrapper button {
 	background: var(--color2);
 	cursor: pointer;
-	border: 1px solid rgba(255, 255, 255, 0.9);
+	border: 1px solid var(--transp-white);
 	border-radius: 2px;
 	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	color: rgba(255, 255, 255, 0.9);
+	color: var(--transp-white);
 	font-size: 1.4rem;
 }
 .contact-form-wrapper button:hover {
@@ -463,4 +468,22 @@ div:not(.wrapper):not(.showcase) {
 }
 .display-grid-wrapper .grid-cell:hover {
 	transform: scale(1.08);
+}
+
+/* div12: svg */
+.svg-wrapper {
+	outline: 2px solid indianred;
+}
+
+/* div13: responsive1 */
+.responsive {
+	outline: 2px solid indianred;
+}
+
+
+/* mobile */
+@media screen and (max-width: 760px) {
+	.nav-bar button {
+		display: none;
+	}
 }

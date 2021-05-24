@@ -24,106 +24,107 @@
 	<script src="js/comments.js"></script>
 </head>
 <body>
-	<div class="wrapper">
+<div class="wrapper">
 
-		<!-- to scroll back up -->
-		<a id="anchor-top"></a>
-		<a class="back-to-top" href="#anchor-top">Back to top</a>
+	<!-- to scroll back up -->
+	<a id="anchor-top"></a>
+	<a class="back-to-top" href="#anchor-top">Back to top</a>
 
-		<!-- div1 -->
-		<div class="showcase div1">
-			<h2>The Rules</h2>
-			<ol>
-				<li>each showcase is a div</li>
-				<li>they have two classes: "showcase" and "div#"</li>
-				<li>the name of each will be an h2 element</li>
-				<li>the css for .showcase is:</li>
-			</ol>
-			<pre class="code-snippet-css">
-				<code>
-					.showcase {
-						/* so that other elements can be positioned relative to it */
-						position: relative;
-						/* so that there is no spillover */
-						overflow: hidden;
-						/* giving space between them */
-						margin-bottom: 2rem;
-						/* making it look a little nicer */
-						padding: 1rem;
-						/* so I can see where they are */
-						outline: 2px solid blue;
-					}
-				</code>
-			</pre>
-			<h3>Font family: Montserrat; sans-serif fallback</h3>
-			<h3>Colorscheme: Muted Sophisticated</h3>
-			<div class="rules-colorscheme">
-				<div class="rules-color rules-color0"><p>#f4f4f4</p></div>
-				<div class="rules-color rules-color1"><p>#b7d8d6</p></div>
-				<div class="rules-color rules-color2"><p>#789e9e</p></div>
-				<div class="rules-color rules-color3"><p>#4d6466</p></div>
-				<div class="rules-color rules-color4"><p>#eef3d8</p></div>
-				<div class="rules-color rules-color5"><p>#fe615a</p></div>
-			</div>
+	<!-- div1 -->
+	<div class="showcase div1">
+		<h2>The Rules</h2>
+		<ol>
+			<li>each showcase is a div</li>
+			<li>they have two classes: "showcase" and "div#"</li>
+			<li>the name of each will be an h2 element</li>
+			<li>the css for .showcase is:</li>
+		</ol>
+		<pre class="code-snippet-css">
+			<code>
+				.showcase {
+					/* so that other elements can be positioned relative to it */
+					position: relative;
+					/* so that there is no spillover */
+					overflow: hidden;
+					/* giving space between them */
+					margin-bottom: 2rem;
+					/* making it look a little nicer */
+					padding: 1rem;
+					/* so I can see where they are */
+					outline: 2px solid blue;
+				}
+			</code>
+		</pre>
+		<h3>Font family: Montserrat; sans-serif fallback</h3>
+		<h3>Colorscheme: Muted Sophisticated</h3>
+		<div class="rules-colorscheme">
+			<div class="rules-color rules-color0"><p>#f4f4f4</p></div>
+			<div class="rules-color rules-color1"><p>#b7d8d6</p></div>
+			<div class="rules-color rules-color2"><p>#789e9e</p></div>
+			<div class="rules-color rules-color3"><p>#4d6466</p></div>
+			<div class="rules-color rules-color4"><p>#eef3d8</p></div>
+			<div class="rules-color rules-color5"><p>#fe615a</p></div>
 		</div>
+	</div>
 
-		<!-- div2 -->
-		<div class="showcase div2">
-			<h2>Hamburger Menu</h2>
-			<div class="ham-wrapper">
-				<input class="ham-toggle" type="checkbox"/>
-				<svg viewBox="0 0 100 80" width="40" height="40">
-					<rect width="100" height="20"></rect>
-					<rect y="30" width="100" height="20"></rect>
-					<rect y="60" width="100" height="20"></rect>
-				</svg>
-				<div class="ham-sidebar">
-					<ul id="menu">
-						<a href="#"><li>Home</li></a>
-						<a href="#"><li>About</li></a>
-						<a href="#"><li>Contact</li></a>
-					</ul>
-				</div>
-				<div class="ham-content">
-					<p>This style of hamburger menu uses no javascript, and instead uses a hidden checkbox on top of an svg menu.</p>
-				</div>
-			</div>
-		</div>
-
-		<!-- div3 -->
-		<div class="showcase div3">
-			<h2>Blog Entry</h2>
-			<div class="blog-post">
-				<h3>My Thoughts on C</h3>
-				<p class="date-time">December 26, 2020</p>
-				<p>Scripting is the meat and potatoes of DevOps, and it's where I feel at ${HOME}.  The toolsets available to scripters like myself have an altogether different set of requirements than other programming languages.  A scripting language should be portable, interpreted, and infinitely extensible.  Runtime performance and memory management are but afterthoughts in scripts which can take hours to complete.  Bash fits the role perfectly, and it's my favorite language.  However, as a firm believer in the Unix philosophy, it was time to put my money where my mouth is.  It's why I chose to write my chess engine in C.</p>
-			</div>
-			<div class="blog-post">
-				<h3>On Efficient Move Generation</h3>
-				<p class="date-time">April 24, 2021</p>
-				<p>There are two methods I have tried in generating legal moves:</p>
-				<ul>
-					<li>Use a inCheck() method to determine if a move will leave the king in check</li>
-					<li>Keep a list of pinned pieces and treat their move options differently</li>
+	<!-- div2 -->
+	<div class="showcase div2">
+		<h2>Hamburger Menu</h2>
+		<div class="ham-wrapper">
+			<input class="ham-toggle" type="checkbox"/>
+			<svg viewBox="0 0 100 80" width="40" height="40">
+				<rect width="100" height="20"></rect>
+				<rect y="30" width="100" height="20"></rect>
+				<rect y="60" width="100" height="20"></rect>
+			</svg>
+			<div class="ham-sidebar">
+				<ul id="menu">
+					<a href="#"><li>Home</li></a>
+					<a href="#"><li>About</li></a>
+					<a href="#"><li>Contact</li></a>
 				</ul>
-				<p>Both methods yielded similar perft results, neither of which were very good.  I need to refactor my legal move generation and make this process far more efficient.</p>
+			</div>
+			<div class="ham-content">
+				<p>This style of hamburger menu uses no javascript, and instead uses a hidden checkbox on top of an svg menu.</p>
 			</div>
 		</div>
+	</div>
 
-		<!-- div4 -->
-		<div class="showcase div4">
-			<h2>Positioning</h2>
-			<div class="pos-parent">
-			Parent
-				<div class="pos-child">One</div>
-				<div class="pos-child">Two</div>
-				<div class="pos-child">Three</div>
-			</div>
+	<!-- div3 -->
+	<div class="showcase div3">
+		<h2>Blog Entry</h2>
+		<div class="blog-post">
+			<h3>My Thoughts on C</h3>
+			<p class="date-time">December 26, 2020</p>
+			<p>Scripting is the meat and potatoes of DevOps, and it's where I feel at ${HOME}.  The toolsets available to scripters like myself have an altogether different set of requirements than other programming languages.  A scripting language should be portable, interpreted, and infinitely extensible.  Runtime performance and memory management are but afterthoughts in scripts which can take hours to complete.  Bash fits the role perfectly, and it's my favorite language.  However, as a firm believer in the Unix philosophy, it was time to put my money where my mouth is.  It's why I chose to write my chess engine in C.</p>
 		</div>
+		<div class="blog-post">
+			<h3>On Efficient Move Generation</h3>
+			<p class="date-time">April 24, 2021</p>
+			<p>There are two methods I have tried in generating legal moves:</p>
+			<ul>
+				<li>Use a inCheck() method to determine if a move will leave the king in check</li>
+				<li>Keep a list of pinned pieces and treat their move options differently</li>
+			</ul>
+			<p>Both methods yielded similar perft results, neither of which were very good.  I need to refactor my legal move generation and make this process far more efficient.</p>
+		</div>
+	</div>
 
-		<!-- div5 -->
-		<div class="showcase div5">
-			<h2>Nav Bar</h2>
+	<!-- div4 -->
+	<div class="showcase div4">
+		<h2>Positioning</h2>
+		<div class="pos-parent">
+		Parent
+			<div class="pos-child">One</div>
+			<div class="pos-child">Two</div>
+			<div class="pos-child">Three</div>
+		</div>
+	</div>
+
+	<!-- div5 -->
+	<div class="showcase div5">
+		<h2>Nav Bar</h2>
+		<nav>
 			<div class="nav-bar">
 				<div class="img-contact-wrapper">
 					<img src="images/brendan_piano.jpeg"/>
@@ -133,166 +134,184 @@
 						<p class="contact-phone">(312)-206-0231</p>
 					</div>
 				</div>
-				<nav>
-					<ul>
-						<li><a href="#projects">Projects</a></li>
-						<li><a href="#skills">Skills</a></li>
-						<li><a href="#education">Education</a></li>
-						<li><a href="#experience">Experience</a></li>
-						<li><a href="#blog">Blog</a></li>
-						<li><a href="#music">Music</a></li>
-						<li><a href="#">Email me</a></li>
-					</ul>
-				</nav>
-				<a class="nav-resume" href="#"><button>Download Resume</button></a>
+				<ul>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#skills">Skills</a></li>
+					<li><a href="#education">Education</a></li>
+					<li><a href="#experience">Experience</a></li>
+					<li><a href="#blog">Blog</a></li>
+					<li><a href="#music">Music</a></li>
+					<li><a href="#contact">Contact me</a></li>
+				</ul>
+				<a class="nav-resume" href="/coming_soon" target="_blank"><button>Download Resume</button></a>
 			</div>
-		</div>
-
-		<!-- div6 -->
-		<div class="showcase div6">
-			<h2>Cards</h2>
-			<div class="cards-wrapper">
-				<!-- card -->
-				<div class="card">
-					<div class="card-top">
-						<p>Modern Tech Tools</p>
-					</div>
-					<div class="card-bottom">
-						<p>I have extensive experience with:</p>
-						<ul>
-							<li>Azure</li>
-							<li>GCP</li>
-							<li>Terraform</li>
-							<li>Kubernetes/Docker</li>
-							<li>Linux</li>
-							<li>Jenkins/Gitlab</li>
-						</ul>
-						<p>I have used:</p>
-						<ul>
-							<li>AWS</li>
-							<li>Ansible</li>
-							<li>Splunk/ELK/Grafana</li>
-						</ul>
-					</div>
-				</div>
-				<!-- endcard -->
-				<!-- card -->
-				<div class="card">
-					<div class="card-top">
-						<p>Emerging Tech</p>
-					</div>
-					<div class="card-bottom">
-						<p>I have a thorough understanding of key Blockchain principles (transaction verification, fault tolerance, POW, encryption, public ledgers).  I have also coded two Blockchain learning tools, which you can find below:</p>
-						<a href="https://www.schlamalama.com/bc/">Blockchain Learning Tool</a>
-						<p>I also have experience as a solution architect for an AI-based solution in the healthcare industry.</p>
-					</div>
-				</div>
-				<!-- endcard -->
-			</div>
-		</div>
-
-		<!-- div7 -->
-		<div class="showcase div7">
-			<h2>Contact Form</h2>
-			<div class="contact-form-wrapper">
-				<form action="../message/index.php" method="POST" target="_blank">
-					<p>Name</p>
-					<input type="text" name="fname" required placeholder="First Name" onkeydown="return event.key != 'Enter';">
-					<input type="text" name="lname" required placeholder="Last Name" onkeydown="return event.key != 'Enter';">
-					<p>Email</p>
-					<input type="text" name="email" required placeholder="Email" onkeydown="return event.key != 'Enter';">
-					<p>Subject</p>
-					<input type="text" name="subject" required placeholder="Subject" onkeydown="return event.key != 'Enter';">
-					<p>Message</p>
-					<textarea name="message" required placeholder="Message"></textarea>
-					<button name="submit_form">Contact Me</button>
-				</form>
-			</div>
-		</div>
-
-		<!-- div8 -->
-		<div class="showcase div8">
-			<h2>Chessboard</h2>
-			<div class="chessboard-wrapper">
-				<div class="chessboard">
-					<table>
-						<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-						<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-					</table>
-					<div class="alg files"><p>a</p><p>b</p><p>c</p><p>d</p><p>e</p><p>f</p><p>g</p><p>h</p></div>
-					<div class="alg ranks"><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p></div>
-					<div class="chessboard-pieces"></div>
-				</div>
-				<button onclick="createHTMLPieces(window.boardState.pieces, window.pieceFileNames);">Reset Position</button>
-			</div>
-		</div>
-
-		<!-- div9 -->
-		<div class="showcase div9">
-			<h2>Certifications</h2>
-			<div class="certifications-wrapper">
-				<!-- cert -->
-				<div class="certification">
-					<img src="images/aws-sol-arch-assoc.png"/>
-					<div class="certification-description">
-						<p>AWS Solutions Architect Associate</p>
-						<p><em>April 2021</em></p>
-					</div>
-				</div>
-				<!-- endcert -->
-				<!-- cert -->
-				<div class="certification">
-					<img src="images/mulesoft-developer.png"/>
-					<div class="certification-description">
-						<p>Mulesoft Certified Developer</p>
-						<p><em>April 2020</em></p>
-					</div>
-				</div>
-				<!-- endcert -->
-			</div>
-		</div>
-
-		<!-- div10 -->
-		<div class="showcase div10">
-			<h2>Comments Section</h2>
-			<div class="comment-section-wrapper">
-				<div class="comment-create">
-					<input type="text" name="comment" placeholder="Type comment" onkeydown="return event.key != 'Enter';">
-				</div>
-				<button onclick="postComment();">Post</button>
-				<div class="comments">
-					<p>comment 1</p>
-					<p>comment 2</p>
-					<p>comment 3</p>
-				</div>
-			</div>
-		</div>
-
-		<!-- div11 -->
-		<div class="showcase div11">
-			<h2>Display Grid</h2>
-			<div class="display-grid-wrapper">
-				<div class="grid-cell">1</div>
-				<div class="grid-cell">2</div>
-				<div class="grid-cell">3</div>
-				<div class="grid-cell">4</div>
-				<div class="grid-cell">5</div>
-				<div class="grid-cell">6</div>
-				<div class="grid-cell">7</div>
-				<div class="grid-cell">8</div>
-				<div class="grid-cell">9</div>
-				<div class="grid-cell">X</div>
-			</div>
-		</div>
-
-
-	<!-- end of wrapper div -->
+		</nav>
 	</div>
+
+	<!-- div6 -->
+	<div class="showcase div6">
+		<h2>Cards</h2>
+		<div class="cards-wrapper">
+			<!-- card -->
+			<div class="card">
+				<div class="card-top">
+					<p>Modern Tech Tools</p>
+				</div>
+				<div class="card-bottom">
+					<p>I have extensive experience with:</p>
+					<ul>
+						<li>Azure</li>
+						<li>GCP</li>
+						<li>Terraform</li>
+						<li>Kubernetes/Docker</li>
+						<li>Linux</li>
+						<li>Jenkins/Gitlab</li>
+					</ul>
+					<p>I have used:</p>
+					<ul>
+						<li>AWS</li>
+						<li>Ansible</li>
+						<li>Splunk/ELK/Grafana</li>
+					</ul>
+				</div>
+			</div>
+			<!-- endcard -->
+			<!-- card -->
+			<div class="card">
+				<div class="card-top">
+					<p>Emerging Tech</p>
+				</div>
+				<div class="card-bottom">
+					<p>I have a thorough understanding of key Blockchain principles (transaction verification, fault tolerance, POW, encryption, public ledgers).  I have also coded two Blockchain learning tools, which you can find below:</p>
+					<a href="https://www.schlamalama.com/bc/">Blockchain Learning Tool</a>
+					<p>I also have experience as a solution architect for an AI-based solution in the healthcare industry.</p>
+				</div>
+			</div>
+			<!-- endcard -->
+		</div>
+	</div>
+
+	<!-- div7 -->
+	<div class="showcase div7">
+		<h2>Contact Form</h2>
+		<div class="contact-form-wrapper">
+			<form action="../message/index.php" method="POST" target="_blank">
+				<p>Name</p>
+				<input type="text" name="fname" required placeholder="First Name" onkeydown="return event.key != 'Enter';">
+				<input type="text" name="lname" required placeholder="Last Name" onkeydown="return event.key != 'Enter';">
+				<p>Email</p>
+				<input type="text" name="email" required placeholder="Email" onkeydown="return event.key != 'Enter';">
+				<p>Subject</p>
+				<input type="text" name="subject" required placeholder="Subject" onkeydown="return event.key != 'Enter';">
+				<p>Message</p>
+				<textarea name="message" required placeholder="Message"></textarea>
+				<button name="submit_form">Contact Me</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- div8 -->
+	<div class="showcase div8">
+		<h2>Chessboard</h2>
+		<div class="chessboard-wrapper">
+			<div class="chessboard">
+				<table>
+					<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+				</table>
+				<div class="alg files"><p>a</p><p>b</p><p>c</p><p>d</p><p>e</p><p>f</p><p>g</p><p>h</p></div>
+				<div class="alg ranks"><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p></div>
+				<div class="chessboard-pieces"></div>
+			</div>
+			<button onclick="createHTMLPieces(window.boardState.pieces, window.pieceFileNames);">Reset Position</button>
+		</div>
+	</div>
+
+	<!-- div9 -->
+	<div class="showcase div9">
+		<h2>Certifications</h2>
+		<div class="certifications-wrapper">
+			<!-- cert -->
+			<div class="certification">
+				<img src="images/aws-sol-arch-assoc.png"/>
+				<div class="certification-description">
+					<p>AWS Solutions Architect Associate</p>
+					<p><em>April 2021</em></p>
+				</div>
+			</div>
+			<!-- endcert -->
+			<!-- cert -->
+			<div class="certification">
+				<img src="images/mulesoft-developer.png"/>
+				<div class="certification-description">
+					<p>Mulesoft Certified Developer</p>
+					<p><em>April 2020</em></p>
+				</div>
+			</div>
+			<!-- endcert -->
+		</div>
+	</div>
+
+	<!-- div10 -->
+	<div class="showcase div10">
+		<h2>Comments Section</h2>
+		<div class="comment-section-wrapper">
+			<div class="comment-create">
+				<input type="text" name="comment" placeholder="Type comment" onkeydown="return event.key != 'Enter';">
+			</div>
+			<button onclick="postComment();">Post</button>
+			<div class="comments">
+				<p>comment 1</p>
+				<p>comment 2</p>
+				<p>comment 3</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- div11 -->
+	<div class="showcase div11">
+		<h2>Display Grid</h2>
+		<div class="display-grid-wrapper">
+			<div class="grid-cell">1</div>
+			<div class="grid-cell">2</div>
+			<div class="grid-cell">3</div>
+			<div class="grid-cell">4</div>
+			<div class="grid-cell">5</div>
+			<div class="grid-cell">6</div>
+			<div class="grid-cell">7</div>
+			<div class="grid-cell">8</div>
+			<div class="grid-cell">9</div>
+			<div class="grid-cell">X</div>
+		</div>
+	</div>
+
+	<!-- div12 -->
+	<div class="showcase div12">
+		<h2>SVG</h2>
+		<div class="svg-wrapper">
+			<svg width="400" height="400">
+				<circle
+					r="125" cx="50%" cy="50%"
+					fill="indianred" stroke="#2ef2c1"
+				/>
+			</svg>
+		</div>
+	</div>
+
+	<!-- div13 -->
+	<div class="showcase div13">
+		<h2>Responsive 1</h2>
+		<div class="responsive-wrapper">
+		</div>
+	</div>
+
+<!-- end of wrapper div -->
+</div>
 </body>
 </html>
