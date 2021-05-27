@@ -476,8 +476,10 @@ div:not(.wrapper):not(.showcase) {
 }
 
 /* div13: responsive1 */
-.responsive {
+.responsive-wrapper {
 	outline: 2px solid indianred;
+	font-family: "Futura", sans-serif;
+	width: min(90%, 70.5rem);
 }
 
 
