@@ -197,8 +197,8 @@ div:not(.wrapper):not(.showcase) {
 .nav-bar img {
 	border-radius: 50%;
 	object-fit: cover;
-	width: 6vw;
-	height: 6vw;
+	width: 6rem;
+	height: 6rem;
 	box-shadow: 0 0 2pt 1pt white;
 	display: inline-block;
 	vertical-align: middle;
@@ -212,16 +212,15 @@ div:not(.wrapper):not(.showcase) {
 	color: var(--transp-white);
 }
 .contact-name {
-	font-size: 1.4vw;
-	margin: 0.3vw;
+	font-size: 1.4rem;
+	margin: 0.3rem;
 }
 .contact-email, .contact-phone {
-	font-size: 1.2vw;
-	margin: 0.2vw;
+	font-size: 1.2rem;
+	margin: 0.2rem;
 }
 .nav-bar a, .nav-bar button {
-	font-size: 1.4vw;
-/*	width: min(90%, 70.5rem);*/
+	font-size: max(1rem, 1.4vw);
 	color: var(--transp-white);
 }
 .nav-bar ul {
@@ -490,10 +489,15 @@ div:not(.wrapper):not(.showcase) {
 
 
 /* responsive */
-@media screen and (min-width: 992px){
+@media screen and (min-width: 1200px){
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+	.nav-bar ul {
+		display: none;
+	}
 }
 @media screen and (min-width: 577px) and (max-width: 991px) {
-	.nav-bar button {
+	.nav-bar ul {
 		display: none;
 	}
 	.nav-bar img {
@@ -501,10 +505,10 @@ div:not(.wrapper):not(.showcase) {
 	}
 }
 @media screen and (max-width: 576px) {
-	.nav-bar button {
+	.nav-bar ul {
 		display: none;
 	}
-	.img-contact-wrapper {
+	.nav-bar img {
 		display: none;
 	}
 }
