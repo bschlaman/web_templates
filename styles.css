@@ -155,8 +155,9 @@ div:not(.wrapper):not(.showcase) {
 }
 
 /* div3: blog post */
-.div3 {
+.blog-posts-wrapper {
 	height: 30rem;
+	overflow-x: scroll;
 }
 .blog-post {
 	padding: 1rem;
