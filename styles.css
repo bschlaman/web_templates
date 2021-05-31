@@ -157,10 +157,12 @@ div:not(.wrapper):not(.showcase) {
 /* div3: blog post */
 .blog-posts-wrapper {
 	height: 30rem;
-	overflow-x: scroll;
+	overflow-y: scroll;
 }
 .blog-post {
-	padding: 1rem;
+	padding-left: 1rem;
+	margin-bottom: 1rem;
+	border-left: 1px solid var(--transp-black);
 }
 .date-time {
 	color: #555;
