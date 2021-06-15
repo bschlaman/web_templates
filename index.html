@@ -16,12 +16,18 @@
 	<link rel="icon" type="image/png" href="/favicon-32.png">
 	<title>Templates | Brendan Schlaman</title>
 
-	<!-- highligh.js -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+	<!-- custom js -->
 	<script src="js/chessboard.js"></script>
 	<script src="js/comments.js"></script>
+
+	<!-- highlight.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/a11y-dark.min.css">
+	<script>hljs.highlightAll();</script>
+	<!-- mathjax -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
@@ -39,8 +45,7 @@
 			<li>the name of each will be an h2 element</li>
 			<li>the css for .showcase is:</li>
 		</ol>
-		<pre class="code-snippet-css">
-			<code>
+		<pre><code class="hljs lang-css">
 				.showcase {
 					/* so that other elements can be positioned relative to it */
 					position: relative;
@@ -53,8 +58,7 @@
 					/* so I can see where they are */
 					outline: 2px solid blue;
 				}
-			</code>
-		</pre>
+		</code></pre>
 		<h3>Font family: Montserrat; sans-serif fallback</h3>
 		<h3>Colorscheme: Muted Sophisticated</h3>
 		<div class="rules-colorscheme">
@@ -96,9 +100,24 @@
 		<div class="blog-posts-wrapper">
 			<!-- post -->
 			<div class="blog-post">
-				<h3>My Thoughts on C</h3>
-				<p class="date-time">December 26, 2020</p>
-				<p>Scripting is the meat and potatoes of DevOps, and it's where I feel at ${HOME}.  The toolsets available to scripters like myself have an altogether different set of requirements than other programming languages.  A scripting language should be portable, interpreted, and infinitely extensible.  Runtime performance and memory management are but afterthoughts in scripts which can take hours to complete.  Bash fits the role perfectly, and it's my favorite language.  However, as a firm believer in the Unix philosophy, it was time to put my money where my mouth is.  It's why I chose to write my chess engine in C.</p>
+				<h3>How I think about and solve hard problems</h3>
+				<p class="date-time">June 15, 2021</p>
+				<p>I studied physics in college, and my favorite class in physics was Quantum Mechanics because it required thought that was so abstract, you had to invent a new way of thinking just to wrap your mind around it.</p>
+				<p>How I learn: you MUST try it yourself first.  If you need to learn quickly, maybe a different approach?</p>
+				<p>Best way to learn is to teach: BC learning tool, ZK voting, RSA</p>
+			</div>
+			<!-- endpost -->
+			<!-- post -->
+			<div class="blog-post">
+				<h3>My tech hilights</h3>
+				<p class="date-time">June 15, 2021</p>
+				<ul>
+					<li>Chess Engine</li>
+					<li>Slack Chatbot</li>
+					<li>AWS certification</li>
+					<li>ENS Backend</li>
+					<li>ZKP voting protocol</li>
+				</ul>
 			</div>
 			<!-- endpost -->
 			<!-- post -->
@@ -115,54 +134,6 @@
 			<!-- endpost -->
 			<!-- post -->
 			<div class="blog-post">
-				<h3>Topic: Efficient Move Generation for my Engine</h3>
-				<p class="date-time">May 30, 2021</p>
-				<h4>Goals</h4>
-					<ul>
-						<li>improve the performance of my perft</li>
-						<li>explore other board representations</li>
-					</ul>
-					<p>My engine currently uses a 10x12 representation, which is the smallest setup that uses piece offsets with OFFBOARD checks.</p>
-					<h4 id="disecting-qperft-c">Disecting qperft.c</h4>
-					<p>The memory location for the board seems to be the board itself plus capture codes and a delta vector (whatever that is).</p>
-					<pre><code class="lang-c">
-						#define board      (brd+1)                /* 12 x 16 board: dbl guard band */
-						#define capt_code  (brd+1+0xBC+0x77)      /* piece type that can reach this*/
-						#define delta_vec  ((char *) brd+1+0xBC+0xEF+0x77) /* step to bridge certain vector */
-					</code></pre>
-					<p>Ignoring for now that <code>brd</code> starts earlier than <code>board</code>, the board has a length of <code>0xBC + 0x77 = 0x133</code> or <code>188 + 119 = 307</code>.  The comments in the code indicate that it is a 12 x 16 board representation, but that only comes out to a size of 192.  What's more, following the 0x88 style, only the first 185 or 186 squares are useful (depending on where the board is placed within the guard squares).</p>
-					<p>The next clue is in the <code>board_init</code> function.</p>
-					<pre><code class="lang-c">
-						for(i= -1; i&lt;0xBC; i++) b[i] = (i-0x22)&amp;0x88 ? GUARD : DUMMY;
-					</code></pre>
-					<p>So it appears that the 0xBC portion of the board houses the actual squares.  0x88 shows up here to determine if the square is offboard.  The advantage of an 0x88 board representation is that the 16ths place nibble represents the rank, and the 1s place nibble represents the file.  This means taking the bitwise &amp; operator with a square and 0x88 (1000 1000<sub>2</sub>) will determine if it is OFFBOARD.</p>
-					<p>There is also an offset of 0x22 here, which indicates that there are two rows of 16 guard squares +2 on the 3rd row.  Using the following code, I've printed the resulting board:</p>
-					<pre><code class="lang-c">
-						int invertRows(int i){
-						  return 0xB0 + i - 2 * (i - i % 0x10);
-						}
-						for(int i = 0; i &lt; 0xBC + 4; i++){
-						  if(i % 0x10 == 0) printf("\n");
-						  printf("%c ", (invertRows(i)-0x22)&amp;0x88 ? '-' : 'X');
-						}
-					</code></pre>
-					<p>Output:</p>
-					<pre><code>
-						- - - - - - - - - - - - - - - -
-						- - - - - - - - - - - - - - - -
-						- - X X X X X X X X - - - - - -
-						- - X X X X X X X X - - - - - -
-						- - X X X X X X X X - - - - - -
-						- - X X X X X X X X - - - - - -
-						- - X X X X X X X X - - - - - -
-						- - X X X X X X X X - - - - - -
-						- - X X X X X X X X - - - - - -
-						- - X X X X X X X X - - - - - -
-						- - - - - - - - - - - - - - - -
-						- - - - - - - - - - - - - - - -
-					</code></pre>
-					<p>The problem with printing out a board with A1 in the lower left corner is that the for loop will print starting at the top.  I therefore introduce the <code>invertRows</code> function that assumes a 12x16 board layout and converts an index to its corresponding index mirrored across the y axis.</p>
-					<p>At this point, I'm still unsure what purpose the extra 0x77 of allocated space for the board will be used for.  Perhaps a color indicator?</p>
 			</div>
 			<!-- endpost -->
 		</div>
@@ -170,12 +141,9 @@
 
 	<!-- div4 -->
 	<div class="showcase div4">
-		<h2>Positioning</h2>
-		<div class="pos-parent">
-		Parent
-			<div class="pos-child">One</div>
-			<div class="pos-child">Two</div>
-			<div class="pos-child">Three</div>
+		<h2>Profile site main content</h2>
+		<div class="content-section">
+			<h2>Professional and personal projects</h2>
 		</div>
 	</div>
 
@@ -201,7 +169,7 @@
 					<li><a href="#music">Music</a></li>
 					<li><a href="#contact">Contact me</a></li>
 				</ul>
-				<a class="nav-resume" href="/coming_soon" target="_blank"><button>Download Resume</button></a>
+				<a class="nav-resume" href="/resume" target="_blank"><button>Download Resume</button></a>
 			</div>
 		</nav>
 	</div>
@@ -367,6 +335,20 @@
 		<h2>Responsive 1</h2>
 		<div class="responsive-wrapper">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam eleifend mi in nulla. Imperdiet sed euismod nisi porta lorem. Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Gravida cum sociis natoque penatibus et. Lacus luctus accumsan tortor posuere ac. In tellus integer feugiat scelerisque. Quam elementum pulvinar etiam non quam. Faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Faucibus ornare suspendisse sed nisi.</p>
+		</div>
+	</div>
+
+	<!-- div14 -->
+	<div class="showcase div13">
+		<h2>Math</h2>
+		<div class="math-wrapper">
+<p>At its very core, the cryptosystem is thus: With message <span class="math inline">\(m\)</span>, public exponent <span class="math inline">\(e\)</span> (typically 65537), private key <span class="math inline">\(d\)</span>, and <span class="math inline">\(N = p \cdot q\)</span>, where <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are large primes.</p>
+<p><span class="math inline">\(m^{e} \pmod{N}\)</span> is the encrypted message<br />
+Private key <span class="math inline">\(d = (k \cdot φ(N)+1)/e\)</span> where <span class="math inline">\(k\)</span> satisfies <span class="math inline">\(d \cdot e ≡ 1 (mod \phi(N))\)</span><br />
+Public key is the combination of <span class="math inline">\(N\)</span> and <span class="math inline">\(e\)</span></p>
+<p>message is decrypted by raising the encrypted message to the power of <span class="math inline">\(d\)</span>, since <span class="math display">\[m^{(k \cdot \phi (N)+1)} ≡ m \pmod{N}\]</span></p>
+
+
 		</div>
 	</div>
 

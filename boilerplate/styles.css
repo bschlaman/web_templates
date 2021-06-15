@@ -2,16 +2,26 @@
 	### SETUP
 */
 
-/* wire-framing */
-div:not(.wrapper):not(.showcase) {
-	/*border: 1px solid black;*/
+:root {
+	/* off white */
+	--color1: #f4f4f4;
+	/* charcoal */
+	--color2: #242729;
+	/* blue highlight */
+	--color3: #2996ed;
+	/* slightly transparent black */
+	--transp-black: rgba(0, 0, 0, 0.9);
+	/* slightly transparent white */
+	--transp-white: rgba(255, 255, 255, 0.9);
+/*	--font: "Montserrat", sans-serif;*/
+	--font: "Quicksand", sans-serif;
 }
 
 /* defaults */
 html {
-/*	scroll-behavior: smooth;*/
-/*	-webkit-tap-highlight-color: transparent;*/
-/*	box-sizing: border-box;*/
+	scroll-behavior: smooth;
+	/* -webkit-tap-highlight-color: transparent;*/
+	box-sizing: border-box;
 }
 a {
 	text-decoration: none;
@@ -22,7 +32,7 @@ input, select, textarea, button {
 
 /* global */
 body {
-	font-family: "Montserrat", sans-serif;
+	font-family: var(--font);
 }
 
 /*
