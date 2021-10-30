@@ -114,7 +114,7 @@ function createPosition(pieces){
 	setPiece(pieces, "wk", "c8");
 	setPiece(pieces, "bp", "a7");
 	setPiece(pieces, "bp", "b7");
-	setPiece(pieces, "wp", "c6");
+	setPiece(pieces, "wp", "b6");
 	setPiece(pieces, "wr", "a1");
 }
 
