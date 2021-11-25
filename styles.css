@@ -494,6 +494,20 @@ p > code {
 	width: min(90%, 70.5rem);
 }
 
+/* div15: callout */
+.callout {
+	display: flex;
+	background: lightgrey;
+	border-left: 3px solid black;
+	border-radius: 5px;
+	max-width: 40%;
+	padding: 0.5rem 1rem;
+	align-items: center;
+}
+.callout p:nth-of-type(1) {
+	white-space: nowrap;
+	margin-right: 1.5rem;
+}
 
 /* responsive */
 @media screen and (min-width: 1200px){
