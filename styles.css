@@ -550,6 +550,24 @@ p > code {
 	margin: 0 2rem;
 }
 
+.todo-app-wrapper {
+	display: flex;
+	gap: 1rem;
+}
+.todo-app-wrapper .todo-app-bucket {
+	background: lightgrey;
+	height: 16rem;
+	width: 100%;
+}
+.todo-app-bucket .task {
+	position: absolute;
+	padding: 1rem;
+	background: white;
+	margin: 3px;
+}
+.task {
+}
+
 
 /* responsive */
 @media screen and (min-width: 1200px){

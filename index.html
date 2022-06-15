@@ -17,8 +17,9 @@
 	<title>Templates | Brendan Schlaman</title>
 
 	<!-- custom js -->
-	<script src="js/chessboard.js"></script>
-	<script src="js/comments.js"></script>
+	<script defer src="js/chessboard.js"></script>
+	<script defer src="js/comments.js"></script>
+	<script defer src="js/todo.js"></script>
 
 	<!-- highlight.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
@@ -177,7 +178,7 @@
 		<nav>
 			<div class="nav-bar">
 				<div class="img-contact-wrapper">
-					<img src="images/brendan_piano.jpeg"/>
+					<img src="media/brendan_piano.jpeg"/>
 					<div class="contact">
 						<p class="contact-name"><strong>Brendan Schlaman</strong></p>
 						<p class="contact-email">brendan.schlaman@pwc.com</p>
@@ -279,7 +280,7 @@
 				<div class="alg ranks"><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p></div>
 				<div class="chessboard-pieces"></div>
 			</div>
-			<button onclick="createHTMLPieces(window.boardState.pieces, window.pieceFileNames);">Reset Position</button>
+			<button>Reset Position</button>
 		</div>
 	</div>
 
@@ -289,7 +290,7 @@
 		<div class="certifications-wrapper">
 			<!-- cert -->
 			<div class="certification">
-				<img src="images/aws-sol-arch-assoc.png"/>
+				<img src="media/aws-sol-arch-assoc.png"/>
 				<div class="certification-description">
 					<p>AWS Solutions Architect Associate</p>
 					<p><em>April 2021</em></p>
@@ -298,7 +299,7 @@
 			<!-- endcert -->
 			<!-- cert -->
 			<div class="certification">
-				<img src="images/mulesoft-developer.png"/>
+				<img src="media/mulesoft-developer.png"/>
 				<div class="certification-description">
 					<p>Mulesoft Certified Developer</p>
 					<p><em>April 2020</em></p>
@@ -402,6 +403,22 @@ Public key is the combination of <span class="math inline">\(N\)</span> and <spa
 				<button class="button3">3</button>
 				<button class="button4">4</button>
 			</div>
+		</div>
+	</div>
+
+	<!-- div17 -->
+	<div class="showcase div17">
+		<h2>Todo App Scrum Style UI</h2>
+		<p>Scrum-style UI with dragable task tyles</p>
+		<div class="todo-app-wrapper">
+			<div class="todo-app-bucket">
+				<div class="task">
+					<h4 class="task-title">Sample Task</h4>
+					<p class="task-desc">Create the rest of the TODO app</p>
+				</div>
+			</div>
+			<div class="todo-app-bucket"></div>
+			<div class="todo-app-bucket"></div>
 		</div>
 	</div>
 

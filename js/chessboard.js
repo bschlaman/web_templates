@@ -20,18 +20,18 @@ window.onload = function(){
 	let testFen = "1r1qkb1r/1bp2pp1/p2p1n1p/3Np3/2pPP3/5N2/PPPQ1PPP/R1B2RK1 w k - 0 13";
 
 	const pieceFileNames = {
-		bp: "images/pieces/pawn_black_60.png",
-		bn: "images/pieces/night_black_60.png",
-		bb: "images/pieces/bishop_black_60.png",
-		br: "images/pieces/rook_black_60.png",
-		bq: "images/pieces/queen_black_60.png",
-		bk: "images/pieces/king_black_60.png",
-		wp: "images/pieces/pawn_white_60.png",
-		wn: "images/pieces/night_white_60.png",
-		wb: "images/pieces/bishop_white_60.png",
-		wr: "images/pieces/rook_white_60.png",
-		wq: "images/pieces/queen_white_60.png",
-		wk: "images/pieces/king_white_60.png",
+		bp: "media/pieces/pawn_black_60.png",
+		bn: "media/pieces/night_black_60.png",
+		bb: "media/pieces/bishop_black_60.png",
+		br: "media/pieces/rook_black_60.png",
+		bq: "media/pieces/queen_black_60.png",
+		bk: "media/pieces/king_black_60.png",
+		wp: "media/pieces/pawn_white_60.png",
+		wn: "media/pieces/night_white_60.png",
+		wb: "media/pieces/bishop_white_60.png",
+		wr: "media/pieces/rook_white_60.png",
+		wq: "media/pieces/queen_white_60.png",
+		wk: "media/pieces/king_white_60.png",
 	};
 
 	let boardState = {
@@ -50,25 +50,32 @@ window.onload = function(){
 
 	createPosition(boardState.pieces);
 
+	document.querySelector(".chessboard-wrapper button").onclick = () => {
+		createHTMLPieces(boardState.pieces, pieceFileNames);
+	}
 	// create DOM elements for the pieces based on pieces array
 	createHTMLPieces(boardState.pieces, pieceFileNames);
 }
 
-function makeDragable(element){
+function makeDragable(element, releasefunc, boundary){
 	let cursorStartX, cursorStartY, cursorOffsetX, cursorOffsetY;
 	let newX, newY;
-	let boundary = document.querySelector(".chessboard-wrapper").clientWidth - element.clientWidth;
 	element.onmousedown = (e) => {
 		e = e || window.event;
 		e.preventDefault();
+		if(element.style.position !== "absolute")
+			console.warn(`position of dragable element not absolute: ${element.style.position}`);
+		let originalZIndex = element.style.zIndex;
+		if(originalZIndex !== "" && originalZIndex !== "1")
+			console.warn(`z index of dragable element not 0 or 1: ${originalZIndex}`);
 		element.style.zIndex = "2";
 		cursorStartX = e.clientX;
 		cursorStartY = e.clientY;
 		document.onmouseup = () => {
 			document.onmouseup = null;
 			document.onmousemove = null;
-			element.style.zIndex = "1";
-			snapToBoard(element);
+			element.style.zIndex = originalZIndex;
+			releasefunc(element);
 		};
     document.onmousemove = (e) => {
 			e = e || window.event;
@@ -79,8 +86,8 @@ function makeDragable(element){
 			cursorStartY = e.clientY;
 			newX = element.offsetLeft - cursorOffsetX;
 			newY = element.offsetTop - cursorOffsetY;
-			if(newX > boundary){ newX = boundary; } else if(newX < 0){ newX = 0; }
-			if(newY > boundary){ newY = boundary; } else if(newY < 0){ newY = 0; }
+			if(boundary && newX > boundary){ newX = boundary; } else if(newX < 0){ newX = 0; }
+			if(boundary && newY > boundary){ newY = boundary; } else if(newY < 0){ newY = 0; }
 			element.style.left = newX + "px";
 			element.style.top = newY + "px";
 		};
@@ -142,8 +149,9 @@ function createHTMLPieces(pieces, pieceFileNames){
 	}
 	// make the piece img DOM elements dragable
 	let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
-	for(let i = 0 ; i < pieceImages.length ; i++){
-		makeDragable(pieceImages[i]);
+	for(let i = 0; i < pieceImages.length; i++){
+		let boundary = document.querySelector(".chessboard-wrapper").clientWidth - pieceImages[i].clientWidth;
+		makeDragable(pieceImages[i], snapToBoard, boundary);
 	}
 }
 
