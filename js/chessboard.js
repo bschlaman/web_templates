@@ -69,7 +69,6 @@ function makeDragable(element, releasefunc, boundary){
 		element.style.zIndex = "2";
 		let cursorStartX = e.clientX;
 		let cursorStartY = e.clientY;
-		console.log(cursorStartX, cursorStartY);
 
 		document.onmouseup = () => {
 			document.onmouseup = null;

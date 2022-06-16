@@ -556,15 +556,20 @@ p > code {
 }
 .todo-app-wrapper .todo-app-bucket {
 	background: lightgrey;
-	height: 16rem;
+	height: 26rem;
 	width: 100%;
 }
 .todo-app-bucket .task {
-	position: absolute;
 	padding: 1rem;
 	background: white;
 	margin: 3px;
-	display: inline;
+	cursor: move;
+}
+.task.dragging {
+	background: lightblue;
+}
+.droppable-hover {
+	background: grey;
 }
 
 

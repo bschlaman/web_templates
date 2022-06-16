@@ -1,17 +1,24 @@
-function loadTodoApp(){
-	const task = document.getElementsByClassName("task")[0];
-	const boundary = document.querySelector(".todo-app-wrapper").clientWidth
-		- task.clientWidth;
-	makeDragable(task, snapToTodoBucket, boundary);
-}
+(function (){
+	const tasks = document.querySelectorAll(".task");
+	const buckets = document.querySelectorAll(".todo-app-bucket");
 
-function snapToTodoBucket(element){
-	const bucketWidth = document.querySelector(".todo-app-bucket").clientWidth;
-	const col = Math.floor((element.offsetLeft+element.clientWidth/2) / bucketWidth);
-	// TODO: add checks here
-	const newParent = document.querySelectorAll(".todo-app-bucket")[col];
-	element.parentElement.removeChild(element);
-	newParent.appendChild(element);
-}
+	tasks.forEach(task => {
+		task.addEventListener("dragstart", () => {
+			task.classList.add("dragging");
+		});
 
-loadTodoApp();
+		task.addEventListener("dragend", () => {
+			task.classList.remove("dragging");
+		});
+
+	});
+
+	buckets.forEach(bucket => {
+		bucket.addEventListener("dragover", e => {
+			e.preventDefault();
+			// console.log(bucket);
+			const dragging = document.querySelector(".task.dragging");
+			bucket.appendChild(dragging);
+		});
+	});
+})();
