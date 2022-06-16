@@ -1,7 +1,9 @@
-// window.onload = () => {
-// 	let task = document.getElementsByClassName("task")[0];
-// 	makeDragable(task, snapToTodoBucket);
-// }
+function loadTodoApp(){
+	const task = document.getElementsByClassName("task")[0];
+	const boundary = document.querySelector(".todo-app-wrapper").clientWidth
+		- task.clientWidth;
+	makeDragable(task, snapToTodoBucket, boundary);
+}
 
 function snapToTodoBucket(element){
 	const bucketWidth = document.querySelector(".todo-app-bucket").clientWidth;
@@ -11,3 +13,5 @@ function snapToTodoBucket(element){
 	element.parentElement.removeChild(element);
 	newParent.appendChild(element);
 }
+
+loadTodoApp();

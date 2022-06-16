@@ -58,34 +58,35 @@ window.onload = function(){
 }
 
 function makeDragable(element, releasefunc, boundary){
-	let cursorStartX, cursorStartY, cursorOffsetX, cursorOffsetY;
-	let newX, newY;
 	element.onmousedown = (e) => {
 		e = e || window.event;
 		e.preventDefault();
-		if(element.style.position !== "absolute")
+		if(getComputedStyle(element).position !== "absolute")
 			console.warn(`position of dragable element not absolute: ${element.style.position}`);
-		let originalZIndex = element.style.zIndex;
-		if(originalZIndex !== "" && originalZIndex !== "1")
-			console.warn(`z index of dragable element not 0 or 1: ${originalZIndex}`);
+		let originalZIndex = getComputedStyle(element).zIndex;
+		if(originalZIndex !== "auto" && originalZIndex !== "1")
+			console.warn(`z index of dragable element not auto or 1: ${originalZIndex}`);
 		element.style.zIndex = "2";
-		cursorStartX = e.clientX;
-		cursorStartY = e.clientY;
+		let cursorStartX = e.clientX;
+		let cursorStartY = e.clientY;
+		console.log(cursorStartX, cursorStartY);
+
 		document.onmouseup = () => {
 			document.onmouseup = null;
 			document.onmousemove = null;
 			element.style.zIndex = originalZIndex;
 			releasefunc(element);
 		};
+
     document.onmousemove = (e) => {
 			e = e || window.event;
 			e.preventDefault();
-			cursorOffsetX = cursorStartX - e.clientX;
-			cursorOffsetY = cursorStartY - e.clientY;
+			let cursorOffsetX = cursorStartX - e.clientX;
+			let cursorOffsetY = cursorStartY - e.clientY;
 			cursorStartX = e.clientX;
 			cursorStartY = e.clientY;
-			newX = element.offsetLeft - cursorOffsetX;
-			newY = element.offsetTop - cursorOffsetY;
+			let newX = element.offsetLeft - cursorOffsetX;
+			let newY = element.offsetTop - cursorOffsetY;
 			if(boundary && newX > boundary){ newX = boundary; } else if(newX < 0){ newX = 0; }
 			if(boundary && newY > boundary){ newY = boundary; } else if(newY < 0){ newY = 0; }
 			element.style.left = newX + "px";

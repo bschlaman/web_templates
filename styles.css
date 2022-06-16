@@ -564,8 +564,7 @@ p > code {
 	padding: 1rem;
 	background: white;
 	margin: 3px;
-}
-.task {
+	display: inline;
 }
 
 
