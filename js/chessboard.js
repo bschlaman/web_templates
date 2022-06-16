@@ -57,7 +57,7 @@ window.onload = function(){
 	createHTMLPieces(boardState.pieces, pieceFileNames);
 }
 
-function makeDragable(element, releasefunc, boundary){
+function makeDraggable(element, releasefunc, boundary){
 	element.onmousedown = (e) => {
 		e = e || window.event;
 		e.preventDefault();
@@ -151,7 +151,7 @@ function createHTMLPieces(pieces, pieceFileNames){
 	let pieceImages = document.querySelectorAll(".chessboard-wrapper img");
 	for(let i = 0; i < pieceImages.length; i++){
 		let boundary = document.querySelector(".chessboard-wrapper").clientWidth - pieceImages[i].clientWidth;
-		makeDragable(pieceImages[i], snapToBoard, boundary);
+		makeDraggable(pieceImages[i], snapToBoard, boundary);
 	}
 }
 
