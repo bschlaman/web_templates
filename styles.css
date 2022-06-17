@@ -569,7 +569,7 @@ p > code {
 	background: lightblue;
 }
 .droppable-hover {
-	background: grey;
+	background: grey !important;
 }
 
 

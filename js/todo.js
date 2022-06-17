@@ -24,6 +24,20 @@
 				bucket.insertBefore(dragging, belowTask);
 			}
 		});
+
+		// TODO: weird behavior when dragging over the dragging element itself
+		bucket.addEventListener("dragenter", e => {
+			bucket.classList.add("droppable-hover");
+		});
+
+		bucket.addEventListener("dragleave", e => {
+			console.log(bucket);
+			bucket.classList.remove("droppable-hover");
+		});
+
+		bucket.addEventListener("drop", e => {
+			bucket.classList.remove("droppable-hover");
+		});
 	});
 
 	function getClosestTaskBelowCursor(bucket, y){
