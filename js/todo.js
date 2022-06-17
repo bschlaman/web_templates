@@ -1,23 +1,33 @@
 (function (){
 	const tasks = document.querySelectorAll(".task");
 	const buckets = document.querySelectorAll(".todo-app-bucket");
+	const hoverClass = "droppable-hover";
 
 	tasks.forEach(task => {
-		task.addEventListener("dragstart", () => {
+		task.addEventListener("dragstart", _ => {
 			task.classList.add("dragging");
 		});
-
-		task.addEventListener("dragend", () => {
+		task.addEventListener("dragend", _ => {
 			task.classList.remove("dragging");
 		});
-
 	});
 
 	buckets.forEach(bucket => {
 		bucket.addEventListener("dragover", e => {
 			e.preventDefault();
+
 			const dragging = document.querySelector(".task.dragging");
+			// TODO: do I really need vertical sorting functionality?
 			const belowTask = getClosestTaskBelowCursor(bucket, e.clientY);
+
+			// hack: avoid using "dragenter" & "dragleave" events
+			// which do not play nicely with child nodes
+			buckets.forEach(b => {
+				if(b !== bucket) b.classList.remove(hoverClass);
+			});
+
+			bucket.classList.add(hoverClass);
+
 			if(belowTask === null){
 				bucket.appendChild(dragging);
 			} else {
@@ -25,18 +35,8 @@
 			}
 		});
 
-		// TODO: weird behavior when dragging over the dragging element itself
-		bucket.addEventListener("dragenter", e => {
-			bucket.classList.add("droppable-hover");
-		});
-
-		bucket.addEventListener("dragleave", e => {
-			console.log(bucket);
-			bucket.classList.remove("droppable-hover");
-		});
-
-		bucket.addEventListener("drop", e => {
-			bucket.classList.remove("droppable-hover");
+		bucket.addEventListener("drop", _ => {
+			bucket.classList.remove(hoverClass);
 		});
 	});
 
